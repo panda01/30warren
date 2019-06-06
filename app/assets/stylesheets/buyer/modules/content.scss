@@ -1,0 +1,43 @@
+.content,
+.content-container {
+  position: relative;
+  z-index: 500;
+}
+
+.content {
+  top: 100%;
+  color: $gray;
+
+  @include small-screen {
+    top: 0;
+  }
+
+  @include hand {
+    overflow: hidden;
+  }
+
+  h2 {
+    font-size: 20px;
+    color: $headline;
+  }
+
+  .content-container {
+    background-color: $background;
+    padding: 1px 0 30px;
+    overflow: hidden;
+
+    // Safari (and possibly other webkit browsers) fails to render the content
+    // before the header floating above it forces a redraw. This translation is
+    // required to nudge the content into view, forcing it to render before
+    // the page is scrolled.
+    transform: translate(0, -1px);
+  }
+
+  .section {
+    padding: 30px 0 70px 0;
+
+    header {
+      @include margin(bottom, 10px);
+    }
+  }
+}

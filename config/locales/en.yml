@@ -1,0 +1,40 @@
+en:
+  project:
+    name: 30Warren
+    short_name: 30 Warren
+    short_description: Condominium Residences
+    long_name: 30 Warren Condominium Residences
+    seo_name: 30 Warren New Boutique Tribeca Condominiums
+    email: info@30warren.com
+  sales:
+    phone_number: 212 577 0030
+  description:
+    default: 30 Warren is a new development condominium project in the eastern half of Tribeca with 23 design forward loft condominiums designed by François Leininger.
+  keywords:
+    default: 30 Warren, 30Warren, New Tribeca Condo, New Tribeca Condominium, New Boutique Tribeca Condo, Tribeca Lofts, Tribeca Condos, Francois Leininger, Corcoran, Cape Advisors
+  header:
+    register: Inquire
+    team: The Team
+  unit:
+    name: 'Residence %{number}'
+  registrant:
+    introduction: Please register below to receive development updates.
+  jump_links:
+    Team: The Team
+  legal:
+    terms: "The complete offering terms are in an offering plan available from the Sponsor. File # CD15-0080. Sponsor Name: Cape Church Associates, LLC, c/o Cape Advisors, Inc. 483 Broadway, 5th Floor, New York, NY 10013. Equal Housing Opportunity."
+    dimensions: "All square footages and dimensions are approximate and subject to normal construction variances and tolerances. Any decorations, finishes, furnishings and furniture reflected are provided for illustrative purposes only. Sponsor makes no representation or warranties except as may be set forth in the Offering Plan."
+  buyer:
+    salutation: We look forward to hearing from you
+    message:
+      default: |
+        Dear %{full_name},
+
+        Welcome to your personalized website for 30 Warren.
+
+        Below you'll find floor plans for the residences we reviewed during
+        your appointment, along with information about our building amenities
+        and neighborhood highlights.
+
+        Please do not hesitate to contact me if you would like additional
+        information or to schedule another visit.

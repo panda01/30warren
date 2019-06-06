@@ -1,0 +1,34 @@
+<header class="header">
+  <div class="menu-toggle"></div>
+
+  <div class="wordmark-container">
+    <%= link_to t('project.short_name'), root_path, class: "wordmark" %>
+  </div>
+
+  <nav class="main-nav">
+    <div class="nav-items">
+      <%= link_to_nav "Building", building_path %>
+      <%= link_to_nav "Residences", residences_path %>
+      <%= link_to_nav "Neighborhood", neighborhood_path %>
+      <%= link_to_nav "The Team", team_path %>
+      <%= link_to_nav "Gallery", gallery_path %>
+      <%= link_to_nav "Contact", contact_path %>
+
+      <div class="header-availability-page-link">
+        <%= link_to_nav "Availability", units_path %>
+      </div>
+
+      <div class="header-press-page-link">
+        <%= link_to_nav "Press", press_clippings_path %>
+      </div>
+    </div>
+  </nav>
+
+  <% if @jump_links.present? %>
+    <nav class="header-page-nav">
+      <div class="page-nav-contents">
+        <%= jump_links @jump_links, attr: (@jump_links_attr || :itself) %>
+      </div>
+    </nav>
+  <% end %>
+</header>

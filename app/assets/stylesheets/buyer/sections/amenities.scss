@@ -1,0 +1,12 @@
+.views,
+.amenities {
+  @extend %slideshow;
+
+  .overview {
+    .column {
+      @extend %inlineblock;
+      @extend %small;
+      @extend %c1;
+    }
+  }
+}

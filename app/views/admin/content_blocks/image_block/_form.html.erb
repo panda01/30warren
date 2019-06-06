@@ -1,0 +1,23 @@
+<div class="field">
+  <%= field.image_field :image %>
+</div>
+
+<%= field.text_field :title, placeholder: 'Title (optional)' %>
+
+<div class="field">
+  <%= field.rich_text_area :caption, placeholder: 'Caption (optional)', class: 'caption' %>
+</div>
+
+<%= field.field :select, :treatment, field.object.aasm(:treatment).states %>
+
+<%= field.field :select, :size, [['Full', 'full'], ['Half', 'half']] %>
+
+<div class="field">
+  <%= field.check_box :enlargeable %>
+  <%= field.label :enlargeable, 'Enlargeable?' %>
+</div>
+
+<div class="field">
+  <%= field.check_box :rendering %>
+  <%= field.label :rendering, 'Rendering?' %>
+</div>

@@ -1,0 +1,68 @@
+.registrant-form {
+  padding-top: $margin;
+
+  form {
+    margin-top: $margin;
+  }
+
+  .introduction {
+    margin-bottom: $gutters;
+    text-align: center;
+  }
+
+  .registrant-information {
+    padding: 0 0 $gutter;
+  }
+
+  .introduction,
+  .error,
+  .field {
+    max-width: 430px;
+    width: 100%;
+    padding: 0 20px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.disclaimer {
+  max-width: 620px;
+  width: 100%;
+  padding: 0 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: $large-margin;
+  margin-bottom: $large-margin;
+  @extend %regular;
+}
+
+.field-notes {
+  text-align: center;
+  @extend %small;
+}
+
+.contact {
+  .wrapper {
+    padding-bottom: $large-margin;
+  }
+
+  .project-colophon {
+    margin-top: $large-margin;
+  }
+
+  .content-block {
+    width: 100%;
+  }
+
+  .text-block .body {
+    max-width: 390px;
+  }
+}
+
+.thank-you {
+  text-align: center;
+  margin-top: $large-margin;
+  margin-bottom: $large-margin;
+  min-height: 80vh;
+  @extend %regular;
+}

@@ -1,0 +1,6 @@
+<div class="map-block">
+  <%= render partial: 'shared/map', locals: {
+    name: cb.id,
+    places: Place.active.order(:name).where(Place.arel_table[:long].not_eq(nil))
+  } %>
+</div>

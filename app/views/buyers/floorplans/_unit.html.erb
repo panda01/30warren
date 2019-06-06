@@ -1,0 +1,21 @@
+<div class="unit sub-section">
+  <header>
+    <h2><%= t 'unit.name', number: unit.door_number %></h2>
+
+    <nav>
+      <%= link_to t('zoom_in'),  '#zoom',    class: 'zoom-in' %>
+      <%= link_to t('compare'),  '#compare', class: 'compare-floorplans' %>
+      <% if unit.floor_plan_pdf.present? %>
+        <%= link_to t('download'), unit.floor_plan_pdf.attachment.url %>
+      <% end %>
+    </nav>
+  </header>
+
+  <div class="floor-plans">
+    <% unit.floor_plans.each do |floor_plan| %>
+      <div class="floor-plan">
+        <%= image_tag floor_plan.attachment %>
+      </div>
+    <% end %>
+  </div>
+</div>

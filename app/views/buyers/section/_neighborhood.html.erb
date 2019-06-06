@@ -1,0 +1,64 @@
+<div class="sub-section" id="views">
+  <header>
+    <h2>Expansive Tribeca Views</h2>
+  </header>
+
+  <div id="pano">
+    <a class="paginator previous"></a>
+    <a class="paginator next"></a>
+
+    <div id="pano-canvas"></div>
+    <div id="pano-compass"></div>
+  </div>
+
+  <script type="text/javascript">
+    var pano = new pano2vrPlayer("pano-canvas");
+    var $compass = $('#pano-compass');
+
+    pano.readConfigUrl("<%= image_path("pano.xml") %>");
+
+    setInterval(function () {
+      var angle = pano.getPan();
+      var north = angle + 84;
+
+      $compass.css({
+        transform: "rotate(" + north + "deg)"
+      });
+    }, 100);
+
+    $('#pano .paginator').on('click', function() {
+      var currentAngle = pano.getPan();
+      var fov = pano.getFov();
+      var tilt = pano.getTilt();
+      if ($(this).hasClass('next')) {
+        var offset = -30;
+      } else {
+        var offset = 30;
+      }
+      pano.moveTo(currentAngle + offset, tilt, fov, 3);
+    });
+  </script>
+</div>
+
+<% if @dashboard.local_features.any? %>
+  <div class="sub-section" id="neighborhood-around-30-warren">
+    <header>
+      <h2>Neighborhood</h2>
+    </header>
+
+    <div class="local-features">
+      <%= render partial: 'buyers/amenities/amenity',
+                 collection: @dashboard.local_features %>
+    </div>
+  </div>
+<% end %>
+
+<% if @dashboard.places.any? %>
+  <div class="sub-section" id="neighborhood-map">
+    <header>
+      <h2>Neighborhood: Map</h2>
+    </header>
+
+    <%= render partial: 'shared/map', locals: { places: @dashboard.places } %>
+  </div>
+<% end %>

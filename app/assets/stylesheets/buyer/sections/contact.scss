@@ -1,0 +1,11 @@
+@include section(contact) {
+  position: relative;
+  text-align: center;
+  min-height: 100vh;
+  padding-top: 160px;
+  margin-top: -100px;
+
+  .contact-details {
+    margin-bottom: $large-margin;
+  }
+}

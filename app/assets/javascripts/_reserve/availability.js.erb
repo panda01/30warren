@@ -1,0 +1,42 @@
+$(function() {
+  $('.available-unit').click(function(event) {
+    event.preventDefault();
+
+    var $this       = $(this),
+        title       = $this.data('title'),
+        floor_plans = eval($(this).data('floor-plans')) || [],
+        renderings  = eval($(this).data('renderings')) || [],
+        details     = $(this).data('details');
+
+    var image_to_slide = function(image_path) {
+      if ($('.slick-cloned').length == 0) {
+        var template = $(slide_template);
+        add_image(image_path, template);
+        return template;
+      }
+    };
+
+    var floor_plan_slides = $.map(floor_plans, image_to_slide);
+    var rendering_slides = $.map(renderings, image_to_slide);
+
+    $.each(floor_plan_slides, function(i, slide) {
+      slide.addClass('floor-plan');
+      slide.find('img, .image, .image-padding, .lightbox-slide-content')
+           .andSelf()
+           .attr('draggable', true);
+    })
+
+    $('.lightbox-title').empty().append(details);
+
+    init_lightbox(floor_plan_slides.concat(rendering_slides), 0, {
+      speed: App.slide_speed,
+      slick: {
+        draggable: false,
+        prevArrow: '<div class="arrow prev"><%= image_tag('arrow-left@2x.png', height: 25, width: 15, alt: 'Previous') %></div>',
+        nextArrow: '<div class="arrow next"><%= image_tag('arrow-right@2x.png', height: 25, width: 15, alt: 'Next') %></div>'
+      }
+    });
+
+    $('.lightbox-slide').addClass('availability-slide');
+  });
+});

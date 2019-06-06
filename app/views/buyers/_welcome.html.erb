@@ -1,0 +1,73 @@
+<div class="welcome">
+  <div class="label">
+    <div class="label-contents">
+      <div class="logo">
+        <div class="name">
+          <%= t('project.name') %>
+        </div>
+      </div>
+
+      <div class="addressee">
+        <%= @dashboard.addressee %>
+      </div>
+
+      <div class="meta">
+        <div class="date">
+          <%= @dashboard.date %>
+        </div>
+
+        <% if @dashboard.units.any? %>
+          <div class="regarding">
+            <% @dashboard.units.each do |unit| %>
+              <div class="unit">
+                <a href="#residences-<%= unit.door_number.parameterize %>">
+                  <%= unit.name %>
+                </a>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
+      <% if @dashboard.helped_by? %>
+        <div class="addresser">
+          <div class="name">
+            <%= @dashboard.contact_name %>
+          </div>
+
+          <% if @dashboard.contact_phone_number? %>
+            <div class="phone-number">
+              <%= @dashboard.contact_phone_number %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="shadowed"></div>
+  </div>
+
+  <div class="message">
+    <div class="body">
+      <%= m @dashboard.message %>
+    </div>
+
+    <% if @dashboard.helped_by? %>
+      <div class="salutation">
+        <%= t('buyer.salutation') %>,
+
+        <% if @dashboard.signature? %>
+          <div class="signature">
+            <%= image_tag @dashboard.signature_path,
+                          **@dashboard.signature_dimensions(width: 180) %>
+          </div>
+        <% end %>
+
+        <div class="seller">
+          <%= @dashboard.helped_by %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+</div>

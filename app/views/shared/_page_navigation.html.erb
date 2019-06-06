@@ -1,0 +1,15 @@
+<div class="page <%= "current" if current_page?(path) %>">
+  <div class="target">
+    <div class="name">
+      <%= link_to page.name, path %>
+    </div>
+
+    <div class="sections">
+      <% page.jump_links.each do |sb| %>
+        <div class="section">
+          <%= link_to sb.title, "#{path}##{sb.title.parameterize}" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

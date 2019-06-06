@@ -1,0 +1,27 @@
+%c1 { width: 25%;  padding-left: $gutter; padding-right: $gutter; }
+%c2 { width: 50%;  padding-left: $gutter; padding-right: $gutter; }
+%c3 { width: 75%;  padding-left: $gutter; padding-right: $gutter; }
+%c4 { width: 100%; padding-left: $gutter; padding-right: $gutter; }
+
+%withgutters { padding-left: $gutter; padding-right: $gutter; }
+
+// Establish column units for all devices
+@mixin device_grid($breakpoint, $min_screen_width, $max_screen_width, $unit_width) {
+  @if $breakpoint == 'hand' {
+    @media only screen and (min-width: $min_screen_width) and (max-width: $max_screen_width) {
+      %c1 { width: 100%; }
+      %c2 { width: 100%; }
+      %c3 { width: 100%; }
+      %c4 { width: 100%; padding-left: $gutter; padding-right: $gutter; }
+    }
+  }
+}
+
+// ######################################################################################################
+// ###### LAYOUT ENGINE #################################################################################
+// ######################################################################################################
+
+// Breakpoint: Hand
+@include device_grid('hand', $hand_min_width, $hand_max_width, $hand_unit_width);
+
+%nogutters { padding-left: 0; padding-right: 0; }

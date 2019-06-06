@@ -1,0 +1,55 @@
+// Type sizes
+$headline-size:    21px;
+$headline-leading: 1.4;
+
+$medium_size:      16px;
+$medium_leading:   1.2;
+
+$regular_size:      15px;
+$regular_leading:   1.2;
+
+$small_size:    13px;
+$small_leading: 1.385;
+
+$tiny_size:       9px;
+$tiny_leading:    1.65em;
+
+%large {
+  font-size: $headline-size;
+  line-height: $headline-leading;
+}
+
+%medium {
+  font-size: $medium_size;
+  line-height: $medium_leading;
+  letter-spacing: 0;
+}
+
+%regular {
+  font-size: $regular_size;
+  line-height: $regular_leading;
+  letter-spacing: 0;
+}
+
+%small {
+  font-size: $small_size;
+  line-height: $small_leading;
+  letter-spacing: 0;
+}
+
+%reduced {
+  font-size: $regular_size * 0.8;
+  line-height: $regular_leading;
+  letter-spacing: 0;
+}
+
+%tiny {
+  font-size: $tiny_size;
+  line-height: $tiny_leading;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+%headline {
+  letter-spacing: 0;
+}

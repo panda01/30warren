@@ -1,0 +1,121 @@
+.the-team {
+  @media (min-width: 1700px) {
+    .wrapper {
+      height: calc(100vh - 150px);
+    }
+  }
+}
+
+.team-members {
+  width: 100%;
+  @extend %whitespacefix;
+
+  @media (min-width: 1000px) and (max-width: 1699px) {
+    height: auto;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 1700px) {
+    width: auto;
+    display: flex;
+    height: 100%;
+  }
+
+  .content-block-chunk {
+    margin-bottom: 0;
+    display: table;
+    width: 100%;
+
+    @media (min-width: 1000px) {
+      height: auto;
+      width: 50%;
+      display: inline-block;
+    }
+
+    @media (min-width: 1700px) {
+      width: auto;
+      display: block;
+      height: 100%;
+      flex: 1;
+      overflow: visible;
+    }
+  }
+}
+
+.team-member {
+  padding: 60px 40px;
+  height: 100%;
+  display: table-cell;
+  vertical-align: middle;
+
+  @include hand {
+    padding: 40px 30px;
+  }
+
+  @media (min-width: 1000px) {
+    height: auto;
+    display: block;
+  }
+
+  @media (min-width: 1700px) {
+    height: 100%;
+    display: table;
+  }
+
+  .content-block-chunk:nth-child(2n + 1) & {
+    background-color: rgb(220, 219, 218);
+
+    @media (min-width: 1000px) {
+      background-color: transparent;
+    }
+  }
+
+  .details {
+    max-width: 570px;
+    width: 100%;
+    margin: 0 auto 0;
+
+    @media (min-width: 1000px) {
+      max-width: 400px;
+    }
+
+    @media (min-width: 1700px) {
+      height: 100%;
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
+
+  header {
+    margin-bottom: $gutter;
+  }
+
+  .name {
+    text-transform: uppercase;
+    color: $headline;
+    display: inline-block;
+    letter-spacing: 0.1em;
+    font-size: $headline-size;
+    line-height: $headline-leading;
+  }
+
+  .role {
+    color: $headline;
+    margin-top: 0.6em;
+    margin-bottom: $regular-leading * 1em;
+    @extend %headline;
+  }
+
+  .description {
+    @extend %regular;
+  }
+
+  .url {
+    margin-top: $gutter;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    @extend %small;
+  }
+}

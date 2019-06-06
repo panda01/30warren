@@ -1,0 +1,15 @@
+<div class="content-blocks">
+  <% grouped_blocks(@page.content_blocks).each do |group| %>
+    <div class="content-block-chunk">
+      <% group.each do |cb| %>
+        <%= render "content_blocks/#{cb.path_name}/show", cb: cb.send(cb.path_name) %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <% if @page.next? %>
+    <div class="next-page-link">
+      <%= link_to "Continue to #{@page.next.name}", @page.next %>
+    </div>
+  <% end %>
+</div>

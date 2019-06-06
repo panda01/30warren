@@ -1,0 +1,8 @@
+<% content_for(:page_title, 'New Condominiums for Sale in NYC | Team') %>
+<% content_for(:page_description, "Learn more about the team behind 30 Warren's new condominiums for sale in NYC.") %>
+
+<div class="team-members content-blocks">
+  <%= render partial: "team_member",
+             collection: @team_members,
+             layout: 'content_block_chunk' %>
+</div>

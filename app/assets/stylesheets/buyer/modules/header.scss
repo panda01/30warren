@@ -1,0 +1,62 @@
+.content-header {
+  $padding-top: 22px;
+  $padding-left: 30px;
+
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  z-index: 501;
+  width: 100%;
+  padding: 0 !important;
+
+  @include small-screen {
+    position: relative;
+  }
+
+  .floating-content {
+    transform: translate3d(0, 0, 0);
+    background-color: $home-header;
+    position: relative;
+    @extend %clearfix;
+
+    @include hand {
+      padding-bottom: 1px;
+    }
+
+    &.stuck {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 9999999999;
+    }
+
+    .logo {
+      @include set-background(wordmark-white, png, 102px 43px, no-repeat center 12px);
+      width: 102px;
+      height: 70px;
+      margin: 0 auto;
+      transform: translateX(-5px);
+
+      text-indent: -9999px;
+      overflow: hidden;
+    }
+  }
+
+  .menu-toggle {
+    @include set-background(menu-small, png, 22px 22px, no-repeat);
+    display: none;
+    height: 22px;
+    width: 22px;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 14px;
+    transition: top 200ms, right 200ms;
+    z-index: 30;
+
+    @include hand {
+      display: block;
+    }
+  }
+}

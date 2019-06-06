@@ -1,0 +1,15 @@
+<% categories = Place.categories.collect { |category| category } %>
+
+<%= f.field :select,
+            :category,
+            options_for_select(categories, { selected: @place.category }),
+            {},
+            class: 'select2' %>
+
+<%= f.field :text_field, :name %>
+<%= f.field :text_field, :address %>
+<%= f.field :text_field, :zip %>
+<%= f.field :text_field, :lat %>
+<%= f.field :text_field, :long %>
+<%= f.field :text_area, :aliases %>
+<%= f.field :check_box, :active %>

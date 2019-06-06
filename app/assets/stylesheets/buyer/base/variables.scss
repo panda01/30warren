@@ -1,0 +1,79 @@
+// Colors
+$black:      rgb(0, 0, 0);
+$white:      rgb(255, 255, 255);
+$background: $white;
+$background-footer: rgb(58, 58, 56);
+$text:       rgb(58, 58, 56);
+$text-footer:       $white;
+$headline:   $text;
+$button:     rgb(138, 134, 130);
+$rule:       lighten($text, 7);
+$input:      rgb(226, 225, 224);
+$selected:   rgb(226, 225, 224);
+$active:     rgb(104, 95, 90);
+$error:      darken(red, 15);
+
+$home-header: rgb( 58,  58,  56);
+$navigation: $white;
+
+$sub-navigation: rgb(138, 134, 130);
+$navigation-text: rgb(104, 95, 90);
+
+$shadow: rgb( 85, 75, 70);
+
+$transparent-black: darken(rgb(85, 75, 70), 15);
+
+$custom-text-color: rgb(58, 58, 56);
+$set1_bg:    #e7e5e4;
+$set1_light: #877d78;
+$set1_mid:   #695a55;
+$set1_dark:  #554b46;
+$set1_lightbox:  #dbd8d6;
+
+$set2_bg:    #dbded9;
+$set2_light: #9fa39b;
+$set2_mid:   #8a8682;
+$set2_dark:  #554b46;
+$set2_lightbox:  #cac5c3;
+
+$set3_bg:    #dddddd;
+$set3_light: #8a8886;
+$set3_mid:   #6c6a68;
+$set3_dark:  #505050;
+$set3_lightbox:  #bbb7b5;
+$dots_color: #dcdbda;
+
+$light-gray: $set2_mid;
+$gray: $custom-text-color;
+
+// Fonts
+$sans: 'neuzeit', Helvetica, Arial, sans-serif;
+
+// Element sizes
+$section_divider_height: 8px;
+
+// Spacing
+$gutter:       20px;
+$gutters:      $gutter * 2;
+$hand_gutter:  10px;
+$hand_gutters: $hand_gutter * 2;
+
+// Margins
+$large_margin:  100px;
+$margin:        40px;
+$small_margin:  15px;
+$tiny_margin:   7px;
+
+// Breakpoints
+$ext_min_width:  1230px;
+$ext_max_width:  9000000px;
+
+$desk_min_width:  960px;
+$desk_max_width:  1229px;
+
+$tab_min_width:  768px;
+$tab_max_width:  959px;
+
+$hand_min_width:  0;
+$hand_max_width:  767px;
+$hand_unit_width: 100%;

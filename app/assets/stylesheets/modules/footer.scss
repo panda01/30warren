@@ -1,0 +1,89 @@
+footer {
+  position: relative;
+  z-index: 10000;
+}
+
+.floating-footer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: $background-footer;
+  padding: 8px 20px 5px;
+  height: 32px;
+
+  &, & a {
+    color: $text-footer;
+  }
+
+  @include hand {
+    position: absolute;
+    left: 0;
+    right: 0;
+    padding: 30px 20px;
+    margin-top: 40px;
+    height: auto;
+  }
+
+  .logomark {
+    position: absolute;
+    top: -45px;
+    left: 50%;
+    margin-left: -15px;
+  }
+
+  .project-details,
+  .links {
+    div {
+      display: inline-block;
+    }
+
+    @include hand {
+      float: none !important;
+    }
+  }
+
+  .project-details {
+    float: left;
+    @extend %small;
+
+    @include hand {
+      margin-bottom: 7px;
+    }
+
+    div {
+      @include hand {
+        display: block;
+      }
+    }
+
+    .project-name {
+      @media (max-width: 920px) {
+        display: none;
+      }
+    }
+  }
+
+  .links {
+    float: right;
+    font-size: 0;
+
+    div {
+      margin-right: 20px;
+      @extend %small;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .is-prepped & {
+    transform: translateY(320%);
+  }
+
+  .is-transitioning-in & {
+    transform: translateY(0);
+    transition: transform 1000ms ease 1900ms;
+  }
+}

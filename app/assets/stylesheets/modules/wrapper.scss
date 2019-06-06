@@ -1,0 +1,7 @@
+.wrapper {
+  padding: 0 $gutters;
+
+  @include hand {
+    overflow-x: hidden;
+  }
+}

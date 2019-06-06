@@ -1,0 +1,19 @@
+.slick-dots {
+  li {
+    @extend %inlineblock;
+  }
+
+  .dot {
+    height: 12px;
+    width: 12px;
+    background-color: $dots_color;
+    margin: 2px 3px 0;
+    transition: background-color 0.5s;
+    cursor: pointer;
+    border-radius: 100%;
+  }
+
+  .slick-active .dot {
+    background-color: $button;
+  }
+}

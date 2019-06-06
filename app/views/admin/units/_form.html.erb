@@ -1,0 +1,34 @@
+<%= f.field :text_field,  :floor %>
+<%= f.field :text_field,  :letter %>
+<%= f.field :text_field,  :price %>
+<%= f.field :text_field,  :exposure %>
+
+<div class="field">
+  <%= f.label :unit_type_id, 'Unit Type' %>
+  <% unit_types = UnitType.all.collect{ |fp| [fp.name, fp.id] } %>
+  <%= f.select(:unit_type_id,
+               options_for_select(unit_types, {selected: @unit.unit_type_id}),
+               {},
+               class: 'select2') %>
+</div>
+
+<%= f.field :text_field,  :monthly_charges %>
+<%= f.field :text_field,  :monthly_taxes %>
+
+<%= f.field :images_field, :views %>
+
+<%= f.field :check_box,   :premium, label: "Premium?" %>
+<%= f.field :state_field, :status %>
+<%= f.field :check_box,   :active %>
+
+<div style="margin-bottom: 20px; font-weight: bold;">
+  The following values will be inherited from the selected Unit Type if left blank.
+</div>
+
+<%= f.field :text_field,  :number_of_bedrooms,     value: @unit[:number_of_bedrooms] %>
+<%= f.field :text_field,  :number_of_bathrooms,    value: @unit[:number_of_bathrooms] %>
+
+<%= f.field :text_field,  :interior_square_feet,   value: @unit[:interior_square_feet] %>
+<%= f.field :text_field,  :exterior_square_feet,   value: @unit[:exterior_square_feet] %>
+<%= f.field :text_field,  :interior_square_meters, value: @unit[:interior_square_meters] %>
+<%= f.field :text_field,  :exterior_square_meters, value: @unit[:exterior_square_meters] %>

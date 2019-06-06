@@ -1,0 +1,23 @@
+.project-colophon {
+  text-align: center;
+  @extend %regular;
+
+  .development-group,
+  .marketing-group {
+    margin-bottom: 2em;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+  }
+
+  .development-group {
+    background-image: image-url('logo-cape-advisors.svg');
+    background-size: 133px 27px;
+    padding-bottom: 32px;
+  }
+
+  .marketing-group {
+    background-image: image-url('logo-corcoran-sunshine.png');
+    background-size: 140px 44px;
+    padding-bottom: 48px;
+  }
+}

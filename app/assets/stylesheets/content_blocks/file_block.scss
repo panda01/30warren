@@ -1,0 +1,11 @@
+.file-block {
+  @extend %text-based-block;
+
+  .file-link {
+    display: inline-block;
+    margin-top: $gutter * 0.8;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    @extend %small;
+  }
+}

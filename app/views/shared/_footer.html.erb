@@ -1,0 +1,21 @@
+<footer>
+  <div class="floating-footer">
+    <%= render partial: 'shared/logomark', locals: { classes: "is-shown" } %>
+
+    <div class="project-details">
+      <div class="project-name">
+        <%= t('project.long_name') %>
+      </div>
+
+      <div class="location">
+        Tribeca New York
+      </div>
+
+      <div class="phone-number">
+        <%= t('sales.phone_number') %>
+      </div>
+    </div>
+
+    <%= render 'footer_links' %>
+  </div>
+</footer>

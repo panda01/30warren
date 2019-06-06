@@ -1,0 +1,47 @@
+<div class="content-block <%= css_class(cb) %>">
+
+  <%= content_tag :h1, cb.title if cb.title? %>
+
+  <div id="pano">
+    <a class="paginator previous"></a>
+    <a class="paginator next"></a>
+
+    <div id="pano-canvas"></div>
+    <div id="pano-compass"></div>
+
+    <% if cb.caption? %>
+      <div class="pano-caption">
+        <%= f cb.caption %>
+      </div>
+    <% end %>
+  </div>
+
+  <script type="text/javascript">
+    var pano = new pano2vrPlayer("pano-canvas");
+    var $compass = $('#pano-compass');
+
+    pano.readConfigUrl("<%= image_path("pano.xml") %>");
+
+    setInterval(function () {
+      var angle = pano.getPan();
+      var north = angle + 84;
+
+      $compass.css({
+        transform: "rotate(" + north + "deg)"
+      });
+    }, 100);
+
+    $('#pano .paginator').on('click', function() {
+      var currentAngle = pano.getPan();
+      var fov = pano.getFov();
+      var tilt = pano.getTilt();
+      if ($(this).hasClass('next')) {
+        var offset = -30;
+      } else {
+        var offset = 30;
+      }
+      pano.moveTo(currentAngle + offset, tilt, fov, 3);
+    });
+  </script>
+
+</div>

@@ -1,0 +1,167 @@
+@include section(residences) {
+  .unit {
+    @extend %whitespacefix;
+
+    header {
+      @extend %c4;
+    }
+
+    .slideshow {
+      @include margin(bottom, $small-margin * 2);
+      @extend %slideshow;
+    }
+
+    .page {
+      overflow: hidden;
+
+      @include hand {
+        overflow: visible;
+      }
+    }
+
+    .unit-amenities {
+      margin-top: $gutter;
+      color: $custom-text-color;
+      @extend %whitespacefix;
+
+      @include hand {
+        @include margin(bottom, -$small-margin);
+      }
+
+      h3 {
+        color: $text;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin: 0;
+        @extend %small;
+      }
+
+      p, li {
+        @include margin(bottom, $small-margin);
+      }
+    }
+
+    .unit-image {
+      margin: 0 -#{$gutter};
+      @extend %image-with-caption;
+      @extend %whitespacefix;
+
+      @include hand {
+        margin: 0 -30px;
+
+        .caption {
+          padding: 0 30px;
+        }
+
+        .image {
+          padding: 0 !important;
+        }
+      }
+    }
+
+    .feature {
+      @include hand {
+        @include margin(bottom, $small_margin);
+      }
+
+      li {
+        padding-left: 1.4em;
+        position: relative;
+        margin: 0;
+
+        &::before {
+          content: '—';
+          position: absolute;
+          left: 0;
+          top: 0;
+        }
+      }
+    }
+
+    .title,
+    .description {
+      color: $headline;
+      @extend %c2;
+      @extend %large;
+      @extend %inlineblock;
+    }
+
+    .unit-details,
+    .features {
+      @extend %c2;
+      @extend %regular;
+      @extend %inlineblock;
+
+      @include hand {
+        margin-top: $small-margin;
+      }
+
+      p {
+        margin: 0;
+      }
+    }
+
+    .unit-details {
+      li {
+        margin: 0;
+      }
+    }
+
+    .rooms {
+      margin-bottom: 1em;
+    }
+
+    .floor-plan-controls {
+      position: absolute;
+      top: 6px;
+      right: 30px;
+      @extend %whitespacefix;
+
+      @include hand {
+        display: none;
+      }
+
+      a {
+        text-decoration: none;
+        color: $headline;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        @extend %small;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      .downloads,
+      .skip-to-floor-plans,
+      .compare {
+        margin-left: 20px;
+        @extend %inlineblock;
+
+        > a {
+          cursor: pointer;
+          font-weight: normal;
+        }
+      }
+
+      .downloads {
+        display: none;
+      }
+
+      .compare {
+        @include dropdown('.other-units');
+      }
+    }
+
+    &.is-showing-floor-plan .floor-plan-controls {
+      .skip-to-floor-plans {
+        display: none;
+      }
+
+      .downloads {
+        display: inline-block;
+      }
+    }
+  }
+}

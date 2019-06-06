@@ -1,0 +1,44 @@
+.anchor-block {
+  width: 0;
+  height: 0;
+  display: block;
+  text-align: center;
+  font-size: 0;
+
+  @include hand {
+    margin-bottom: 0;
+    text-align: left;
+  }
+
+  &.is-visible {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: $gutter;
+    @extend %text-based-block;
+    @extend %c4;
+
+    @include hand {
+      margin-bottom: 40px;
+    }
+  }
+
+  h1 {
+    font-size: $headline-size;
+    line-height: $headline-leading;
+    margin-bottom: 0.4em;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    width: 100%;
+    color: $headline;
+    @extend %headline;
+  }
+}
+
+.anchor-block__text {
+  max-width: 440px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}

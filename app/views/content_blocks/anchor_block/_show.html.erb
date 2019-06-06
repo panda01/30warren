@@ -1,0 +1,13 @@
+<div class="anchor-block <%= css_class(cb) %> <%= 'is-visible' if cb.visible? %>"
+     name="<%= cb.title.parameterize %>">
+  <% if cb.visible? %>
+    <h1>
+      <%= cb.title %>
+    </h1>
+
+    <div class="anchor-block__text">
+      <%= raw cb.body %>
+    </div>
+
+  <% end %>
+</div>

@@ -1,0 +1,231 @@
+# Defaults can be overridden in each category entry if needed
+defaults:
+  zip: 10007
+
+# Home category should only contain one entry
+Home:
+  - name: 30 Warren
+    address: 30 Warren Street
+
+# Additional categories defined below:
+Food & Drink:
+  - name: Tiny's
+    address: 135 W Broadway
+    zip: 10013
+  - name: Laughing Man Coffee
+    address: 1 North End Ave
+    zip: 10282
+  - name: Little Park
+    address: 85 W Broadway
+  - name: Tutto il Giorno
+    address: 114 Franklin St
+    zip: 10013
+  - name: The Odeon
+    address: 145 W Broadway
+    zip: 10013
+  - name: American Cut
+    address: 145 W Broadway
+    zip: 10013
+  - name: Brushstroke
+    address: 30 Hudson St
+    zip: 10013
+  - name: Brandy Library
+    address: 25 N Moore St
+    zip: 10013
+  - name: Weather Up Tribeca
+    address: 159 Duane St
+    zip: 10013
+  - name: Terroir Tribeca
+    address: 24 Harrison St
+    zip: 10013
+  - name: Takahachi
+    address: 145 Duane St
+    zip: 10013
+  - name: Tribeca Grill
+    address: 375 Greenwich St
+    zip: 10013
+  - name: Locanda Verde
+    address: 377 Greenwich St
+    zip: 10013
+  - name: Almond
+    address: 186 Franklin St
+    zip: 10013
+  - name: Thalassa
+    address: 179 Franklin St
+    zip: 10013
+  - name: Tamarind
+    address: 99 Hudson St
+    zip: 10013
+  - name: Tera Mulberry and Vine
+    address: 73 Warren St
+  - name: The Palm
+    address: 206 West St
+    zip: 10282
+  - name: Marc Forgione
+    address: 134 Reade St
+    zip: 10013
+  - name: Bouley
+    address: 163 Duane St
+    zip: 10013
+  - name: Juice Generation
+    address: 101 Maiden Ln
+    zip: 10038
+  - name: Gourmet Garage
+    address: 489 Broome St
+    zip: 10013
+  - name: Whole Foods
+    address: 270 Greenwich St
+  - name: Eataly (Coming Soon)
+    address: 4 World Trade Center
+    zip: 10010
+
+Shopping & Wellness:
+  - name: Brookfield Place
+    address: 230 Vesey St
+    zip: 10281
+  - name: Calypso
+    address: 137 W Broadway
+    zip: 10013
+  - name: Lovely Bride
+    address: 182 Duane St
+    zip: 10013
+  - name: Babesta Cribz
+    address: 56 Warren St
+  - name: Philip Williams Posters
+    address: 122 Chambers St
+  - name: Issey Miyake
+    address: 119 Hudson St
+    zip: 10013
+  - name: Steve Alan
+    address: 103 Franklin St
+    zip: 10013
+  - name: Shinola
+    address: 177 Franklin St
+    zip: 10013
+  - name: Nili Lotan
+    address: 188 Duane St
+    zip: 10013
+  - name: Korin
+    address: 57 Warren St
+  - name: Christina Lehr
+    address: 139 Reade St
+    zip: 10013
+  - name: Best Made Co.
+    address: 36 White St
+    zip: 10013
+  - name: Annelore
+    address: 18 Jay St
+    zip: 10013
+  - name: Patron of the New
+    address: 151 Franklin St
+    zip: 10013
+  - name: Roberta Roller Rabbit
+    address: 176 Duane St
+    zip: 10013
+  - name: Manuel Racim
+    address: 44 Hudson St
+    zip: 10013
+  - name: Grown and Sewn
+    address: 116 Franklin St
+    zip: 10013
+  - name: My Litle Sunshine
+    address: 145 Hudson St
+    zip: 10013
+  - name: Cass Lilien
+    address: 24 Harrison Street
+    zip: 10013
+  - name: Donzella
+    address: 17 White St
+    zip: 10013
+  - name: Mysterious Bookshop
+    address: 58 Warren St
+  - name: NY Vintners
+    address: 21 Warren St
+  - name: Rosie Pope
+    address: 55 Warren St
+  - name: Thom Browne
+    address: 100 Hudson St
+    zip: 10013
+  - name: Baxter & Liebchen
+    address: 50 Laight St
+    zip: 10013
+  - name: Ten Thousand Things
+    address: 7 Harrison St
+    zip: 10013
+  - name: Jonathan Burden Antiques
+    address: 180 Duane St
+    zip: 10013
+  - name: Joseph Carini Carpets
+    address: 335 Greenwich Street
+    zip: 10013
+
+Schools & Culture:
+  - name: BMCC
+    address: 199 Chambers St
+  - name: Buckle My Shoe Learning Center
+    address: 40 Worth St
+    zip: 10013
+  - name: Church Street School for Music
+    address: 74 Warren St
+  - name: Jewish Community Project Preschool
+    address: 146 Duane St
+    zip: 10013
+  - name: Metropolitan College of New York
+    address: 60 West St
+    zip: 10006
+  - name: PS 150 / Tribeca Learning Center
+    address: 334 Greenwich St
+    zip: 10013
+  - name: PS 234 / Independence School
+    address: 292 Greenwich St
+    zip: 10007
+  - name: Stuyvesant High School
+    address: 345 Chambers St
+    zip: 10282
+  - name: Tribeca Community School
+    address: 22 Ericsson Pl
+    zip: 10013
+  - name: Washington Market School
+    address: 55 Hudson St
+    zip: 10013
+
+Landmarks & Green Spaces:
+  - name: The Smyth Hotel
+    address: Little Park
+  - name: The Beekman Hotel
+    address: 5 Beekman St
+    zip: 10038
+  - name: Tribeca Saturday Greenmarket
+    address: 314 Greenwich St
+    zip: 10013
+  - name: Oculus
+    address: 2 3rd Ave
+  - name: One World Trade Center
+    address: 285 Fulton St
+  - name: Fulton Transit Center
+    address: 200 Broadway
+    zip: 10038
+  - name: Taste of Tribeca
+    address: 334 Greenwich St
+    zip: 10013
+  - name: The Flea Theater
+    address: 41 White St
+  - name: Washington Market Park
+    address: 181 Chambers St
+  - name: City Hall Park and Fountain
+    address: Broadway
+  - name: Hudson River Park
+    address: 353 West St
+    zip: 10014
+  - name: Nelson A. Rockefeller Park
+    address: 20 River Terrace
+    zip: 10280
+  - name: River Terrace
+    address: 20 River Terrace
+    zip: 10280
+  - name: Pier 25
+    address: 225 West St
+    zip: 10013
+  - name: Tribeca Park
+    address: 12 Walker St
+    zip: 10013

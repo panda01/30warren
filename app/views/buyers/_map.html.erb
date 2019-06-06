@@ -1,0 +1,36 @@
+<% name, places = map %>
+
+<div class="map map-<%= name.parameterize %> map-area hide">
+  <div class="map-container">
+    <div class="map-frame">
+      <div class="map-canvas"></div>
+    </div>
+  </div>
+
+  <div class="map-controller">
+    <div class="category-places <%= place_css_id(name) %>">
+      <h3>
+        <%= name %>
+      </h3>
+
+      <ul class="places-column">
+        <% places.each do |place| %>
+          <li id="<%= place.slug %>">
+            <a><%= place.name %></a>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    $(function() {
+      var home   = <%= raw(Place.home_pin) %>,
+          places = <%= raw(places.map(&:place_array).concat([Place.home_pin])) %>;
+
+      if (places.length > 0 && home.length > 0) {
+        new GoogleMap($('.map-<%= name.parameterize %>'), places, home);
+      }
+    });
+  </script>
+</div>

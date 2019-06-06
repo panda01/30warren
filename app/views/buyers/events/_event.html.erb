@@ -1,0 +1,41 @@
+<div class="event">
+  <div class="image">
+    <% if event.image.present? && event.image.attachment.present? %>
+      <% if event.url? %>
+        <%= link_to event.url do %>
+          <%= image_tag event.image.attachment_url(:c2) %>
+        <% end %>
+      <% else %>
+        <%= image_tag event.image.attachment_url(:c2) %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="details">
+    <% if event.category? %>
+      <div class="category">
+        <%= event.category %>
+      </div>
+    <% end %>
+
+    <div class="title">
+      <%= event.title %>
+    </div>
+
+    <div class="location">
+      <%= event.location %>
+    </div>
+
+    <% if event.time? %>
+      <div class="time">
+        <%= event.time %>
+      </div>
+    <% end %>
+
+    <% if event.url? %>
+      <div class="url">
+        <%= link_to 'Learn More', event.url %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+@include section(neighborhood) {
+  .local-features {
+    @extend %slideshow;
+  }
+
+  #pano {
+    @extend %slideshow;
+  }
+}

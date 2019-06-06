@@ -1,0 +1,123 @@
+.logomark {
+  $set1-light: #877d78;
+  $set1-mid:   #695a55;
+  $set1-dark:  #554b46;
+
+  $set2-light: #9fa39b;
+  $set2-mid:   #71756d;
+  $set2-dark:  #535652;
+
+  $set3-light: #8a8886;
+  $set3-mid:   #6c6a68;
+  $set3-dark:  #505050;
+
+  position: relative;
+  width: 30px;
+  height: 60px;
+  transition: box-shadow 400ms ease 0;
+
+  .square {
+    position: absolute;
+    // width: 50%;
+    width: 0;
+    padding-top: 50%;
+    transition: background 3000ms ease, width 400ms ease 500ms;
+
+    &.left  {
+      top: 0;
+      right: 50%;
+    }
+
+    &.right {
+      bottom: 0;
+      left: 50%;
+    }
+
+    &.set1 { background: $set1-light; }
+    &.set2 { background: $set2-light; }
+    &.set3 { background: $set3-light; }
+  }
+
+  .rectangle {
+    position: absolute;
+    width: 50%;
+    // padding-top: 150%;
+    padding-top: 0;
+    transition: background 3000ms ease, padding-top 400ms ease 900ms;
+
+    &.left {
+      top: 25%;
+      left: 0;
+
+      &.set1 { background: $set1-dark; }
+      &.set2 { background: $set2-dark; }
+      &.set3 { background: $set3-dark; }
+    }
+
+    &.right {
+      bottom: 25%;
+      right: 0;
+
+      &.set1 { background: $set1-mid; }
+      &.set2 { background: $set2-mid; }
+      &.set3 { background: $set3-mid; }
+    }
+  }
+
+  &.is-shown {
+    box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.25);
+    transition: box-shadow 400ms ease 1300ms;
+
+    .square {
+      width: 50%;
+      transition: background 3000ms ease, width 400ms ease 500ms;
+    }
+
+    .rectangle {
+      padding-top: 150%;
+      transition: background 3000ms ease, padding-top 400ms ease 900ms;
+    }
+  }
+}
+
+.transition-logomark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 62px;
+  height: 124px;
+}
+
+.transition-lockup {
+  position: fixed;
+  top: 50%;
+  left: -50%;
+  transform: translate(-50%, -75%);
+  height: 124px + (43px + 25px) * 2;
+  width: 200px;
+  transition: left 0s ease 2000ms;
+
+  &::before {
+    @include set-background(wordmark, png, 102px 43px);
+    content: "";
+    width: 102px;
+    height: 43px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-53%);
+    opacity: 0;
+    transition: opacity 500ms ease 1500ms;
+  }
+
+  &.is-shown {
+    left: 50%;
+    transition: left 0s ease;
+
+    &::before {
+      opacity: 1;
+      transition: opacity 500ms ease;
+    }
+  }
+}

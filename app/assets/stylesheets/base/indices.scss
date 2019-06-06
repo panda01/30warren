@@ -1,0 +1,67 @@
+.panorama-block h1 {
+  z-index: 1;
+}
+
+.building-section {
+  z-index: 1;
+}
+
+.dropdown img.arrow {
+  z-index: 1;
+}
+
+.panorama-block #pano-compass {
+  z-index: 2;
+}
+
+.units {
+  z-index: 2;
+}
+
+.lightboxable:hover::before {
+  z-index: 3;
+}
+
+.header .menu-toggle {
+  z-index: 30;
+}
+
+#lightbox .slick-counter {
+  z-index: 101;
+}
+
+#lightbox .arrow {
+  z-index: 101;
+}
+
+#close-lightbox {
+  z-index: 102;
+}
+
+.paginator {
+  z-index: 1010;
+}
+
+.content-block-paginator {
+  z-index: 1100;
+}
+
+.read-more {
+  z-index: 1200;
+}
+
+.places-nav {
+  z-index: 1300;
+}
+
+.header {
+  z-index: 1500;
+}
+
+.floating-footer {
+  z-index: 1500;
+}
+
+#lightbox {
+  z-index: 9999999;
+}

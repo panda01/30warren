@@ -1,0 +1,74 @@
+<div class="unit unit--<%= unit.number_of_bedrooms %>-bedrooms"
+     data-floor="<%= unit.floor %>"
+     data-letter="<%= unit.letter %>"
+     data-price="<%= unit.price.to_i %>"
+     data-number-of-bedrooms="<%= unit.number_of_bedrooms %>"
+     data-penthouse="<%= unit.penthouse? %>">
+  <div class="name">
+    <%= unit.door_number %>
+  </div>
+
+  <div class="bedrooms">
+    <%= unit.number_of_bedrooms %>
+  </div>
+
+  <div class="bathrooms">
+    <%= number_with_precision(unit.number_of_bathrooms, strip_insignificant_zeros: true) %>
+  </div>
+
+  <div class="interior">
+    <% if unit.area.interior? %>
+      <%= unit.area.interior %>
+    <% else %>
+      &mdash;
+    <% end %>
+  </div>
+
+  <div class="exterior">
+    <% if unit.area.exterior? %>
+      <%= unit.area.exterior %>
+    <% else %>
+      &mdash;
+    <% end %>
+  </div>
+
+  <div class="exposure">
+    <%= unit.exposure %>
+  </div>
+
+  <div class="price">
+    <%= unit.price %>
+  </div>
+
+  <div class="monthly-charges">
+    <% if unit.monthly_charges? %>
+      <%= unit.monthly_charges %>
+    <% end %>
+  </div>
+
+  <div class="monthly-taxes">
+    <% if unit.monthly_taxes? %>
+      <%= unit.monthly_taxes %>
+    <% end %>
+  </div>
+
+  <div class="floor-plan-pdf">
+    <% if unit.show_floor_plan_pdf? %>
+      <%= link_to "PDF",
+                  unit.floor_plan_pdf.attachment_url,
+                  target: "_blank",
+                  data: {
+                    door_number: unit.door_number
+                  } %>
+    <% end %>
+  </div>
+
+  <div class="floorplans">
+    <% unit.floor_plans.each do |floorplan| %>
+      <div class="image">
+        <%= image_with_proxy floorplan, size: :full_screen %>
+      </div>
+    <% end %>
+  </div>
+
+</div>

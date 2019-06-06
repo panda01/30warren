@@ -1,0 +1,13 @@
+<div class="unit-image <%= unit_image.relationship_name.dasherize.singularize %>">
+  <% if unit_image.caption? %>
+    <div class="caption">
+      <%= unit_image.caption %>
+    </div>
+  <% end %>
+
+  <div class="image orientation-<%= unit_image.orientation %>">
+    <div class="image-padding">
+      <%= image_with_proxy unit_image, size: :full_screen %>
+    </div>
+  </div>
+</div>

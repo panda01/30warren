@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= page_title %></title>
+    <%= csrf_meta_tags %>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="<%= page_description %>">
+
+    <link rel="shortcut icon" type="image/x-icon" href="<%= asset_path('favicon@2x.gif') %>"/>
+
+    <%= stylesheet_link_tag 'buyer', media: 'all' %>
+    <%= javascript_include_tag 'buyer' %>
+
+    <script>
+      L.mapbox.accessToken = '<%= Rails.application.secrets.mapbox_access_token %>';
+    </script>
+  </head>
+
+  <body>
+
+    <div class="wrapper">
+      <%= yield %>
+    </div>
+
+    <%= render partial: 'shared/lightbox' %>
+
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<div class="amenity <%= 'without-caption' if !amenity.caption? %>">
+  <div class="text">
+    <div class="body">
+      <% if amenity.title? %>
+        <h1>
+          <%= amenity.title %>
+        </h1>
+      <% end %>
+
+      <% if amenity.caption? %>
+        <div class="caption">
+          <%= simple_format(amenity.caption) %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <% if amenity.image.present? && amenity.image.attachment.present? %>
+    <div class="image orientation-<%= amenity.image.orientation %>">
+      <div class="image-padding">
+        <div class="image-proxy" style="background-image: url('<%= amenity.image.attachment_url(:full_screen) %>')">
+          <%= image_tag amenity.image.attachment_url(:full_screen) %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+
+</div>

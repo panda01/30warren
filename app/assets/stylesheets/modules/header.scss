@@ -1,0 +1,174 @@
+.header {
+  text-align: center;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: $navigation;
+
+  @include hand {
+    height: 70px;
+
+    .nav-items {
+      padding: 10px;
+    }
+
+    .header-page-nav {
+      display: none;
+    }
+  }
+
+  &.stuck {
+    position: fixed;
+    top: 0;
+  }
+
+  a {
+    display: inline-block;
+    overflow: hidden;
+    margin: 0 16px;
+    color: $navigation-text;
+    vertical-align: top;
+    padding: 12px 0 9px;
+    position: relative;
+    @extend %medium;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 100%;
+      max-width: 50px;
+      height: 2px;
+      background-color: transparent;
+      transform: translateX(-50%);
+      transition: background-color 300ms;
+
+      @include hand {
+        display: none;
+      }
+    }
+
+    &.active,
+    &:hover {
+      color: $navigation-active;
+
+      &::before {
+        background-color: $navigation-active;
+      }
+    }
+  }
+
+  .main-nav {
+    position: relative;
+    border-bottom: 1px solid $black;
+
+    .hairlines & {
+      border-bottom: 0.5px solid $black;
+    }
+
+    @include hand {
+      background-color: $navigation;
+      display: none;
+    }
+
+    a {
+      // Hack to optically center the navigation links under the header
+      transform: translateX(-10px);
+
+      @include hand {
+        transform: none;
+        display: block;
+        padding: 5px 0 !important;
+      }
+    }
+  }
+
+  .menu-toggle {
+    @include set-background(menu-small, png, 22px 22px, no-repeat);
+    display: none;
+    height: 22px;
+    width: 22px;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 14px;
+    transition: top 200ms, right 200ms;
+
+    @include hand {
+      display: block;
+    }
+  }
+
+  .header-press-page-link,
+  .header-availability-page-link {
+    position: absolute;
+    right: 20px;
+    top: 0;
+
+    @include hand {
+      position: static;
+    }
+
+    a {
+      margin: 0;
+      color: $navigation-text;
+      transform: none;
+
+      @include hand {
+        color: $navigation-text;
+      }
+    }
+  }
+
+  .header-availability-page-link {
+    right: auto;
+    left: 20px;
+
+  }
+
+  .header-page-nav {
+    text-align: center;
+    background-color: $sub-navigation;
+    border-bottom: 1px solid $black;
+
+    .hairlines & {
+      border-bottom: 0.5px solid $black;
+    }
+
+    a {
+      color: $navigation-text;
+
+      // Hack to optically center the navigation links under the header
+      transform: translateX(-3px);
+
+      &.active {
+        border-color: $mid-gray;
+      }
+
+      @include hand {
+        transform: none;
+      }
+    }
+
+    li {
+      display: inline-block;
+    }
+
+    .the-team & {
+      @media (min-width: 1000px) {
+        display: none;
+      }
+    }
+  }
+
+  .is-prepped & {
+    transform: translateY(-110%);
+  }
+
+  .is-transitioning-in & {
+    transform: translateY(0);
+    transition: transform 1500ms ease 1400ms;
+  }
+}

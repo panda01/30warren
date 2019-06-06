@@ -1,0 +1,65 @@
+#pano {
+  height: 100%;
+  position: relative;
+
+  @include hand {
+    height: 0;
+    padding-top: 50%;
+  }
+}
+
+#pano-canvas {
+  height: 100%;
+  width: 100%;
+
+  @include hand {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+#pano-compass {
+  height: 40px;
+  width: 40px;
+  border: 2px solid $white;
+  border-radius: 100%;
+  position: absolute;
+  bottom: 10px;
+  left: 70px;
+
+  @include hand {
+    left: 50px;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0px;
+    height: 8px;
+    width: 2px;
+    margin-left: -1px;
+    background-color: $white;
+  }
+
+  &::after {
+    content: "N";
+    position: absolute;
+    top: 11px;
+    left: 0;
+    color: $white;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+  }
+}
+
+.pano-caption {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 10px;
+  padding: 0 $gutter;
+  @extend %small;
+}

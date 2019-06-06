@@ -1,0 +1,86 @@
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+* {
+  outline: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+body, html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: $text;
+  position: relative;
+  font-family: $sans;
+  background: $background;
+  transition: background 800ms ease;
+  @extend %regular;
+
+  &.colophon,
+  &.legal {
+    .wrapper {
+      padding: 100px;
+    }
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @extend %regular;
+  font-weight: normal;
+}
+
+div, ul {
+  vertical-align: top;
+}
+
+ul {
+  list-style-position: outside;
+}
+
+p {
+  margin-bottom: 1.2em;
+
+  &:last-child {
+    margin: 0;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: $headline;
+  transition: color 300ms ease, border-color 300ms ease;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.wrapper {
+  min-height: 100%;
+  @extend %clearfix;
+
+  @include hand {
+    padding-bottom: 200px !important;
+  }
+
+  .is-prepped & {
+    opacity: 0;
+  }
+
+  .is-transitioning-in & {
+    opacity: 1;
+    transition: opacity 2000ms ease 3000ms;
+  }
+}
+
+img {
+  display: block;
+}

@@ -1,0 +1,43 @@
+.paginator {
+  position: absolute;
+  top: 0;
+  text-align: center;
+  width: 60px;
+  height: 100%;
+  transition: opacity 500ms;
+  text-indent: -9999px;
+  overflow: hidden;
+
+  // Redeclared here since buyer.scss doesn't include indices
+  z-index: 1010;
+
+  @include hand {
+    width: 40px;
+  }
+
+  &.previous {
+    @include set-background(arrow-small-left-white, png,
+                            40px 40px,
+                            no-repeat center center,
+                            $color: $black);
+    left: 0;
+  }
+
+  &.next {
+    @include set-background(arrow-small-right-white, png,
+                            40px 40px,
+                            no-repeat center center,
+                            $color: $black);
+    right: 0;
+  }
+
+  &.is-disabled,
+  &.slick-disabled {
+    opacity: 0;
+    cursor: default;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}

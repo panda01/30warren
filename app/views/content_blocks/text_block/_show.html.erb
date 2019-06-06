@@ -1,0 +1,11 @@
+<div class="content-block <%= css_class(cb) %>" id="<%= css_id(cb) %>">
+  <% if cb.title? %>
+    <header>
+      <h2><%= cb.title %></h2>
+    </header>
+  <% end %>
+
+  <div class="body">
+    <%= f cb.body %>
+  </div>
+</div>

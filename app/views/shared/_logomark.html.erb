@@ -1,0 +1,8 @@
+<% classes = ["logomark", classes].compact %>
+
+<%= link_to root_path, class: classes.join(" ") do %>
+  <div class="square light left set1"></div>
+  <div class="rectangle dark left set1"></div>
+  <div class="rectangle mid right set1"></div>
+  <div class="square light right set1"></div>
+<% end %>

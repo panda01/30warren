@@ -1,0 +1,143 @@
+.press-index .wrapper {
+  padding-top: 0;
+  padding-bottom: 32px;
+  background-color: $black;
+}
+
+.press-clippings {
+  .press-clipping {
+    position: relative;
+    width: 20%;
+    padding-bottom: 16%;
+    float: left;
+    text-align: center;
+    background-color: $black;
+    color: $white;
+    border: 0.5px solid $white;
+    box-sizing: border-box;
+    @extend %small;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 100%;
+      max-width: 50px;
+      height: 2px;
+      background-color: transparent;
+      transform: translateX(-50%);
+      transition: background-color 300ms;
+    }
+
+    &:hover::before {
+      background-color: $white;
+    }
+
+    @include desk {
+      width: 25%;
+      padding-bottom: 20%;
+    }
+
+    @include tab {
+      width: 33.3333333%;
+      padding-bottom: 26%;
+    }
+
+    @include hand {
+      width: 100%;
+      padding-bottom: 0;
+    }
+  }
+
+  .press-clipping-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    :nth-child(5n) & {
+      border-right: 0;
+    }
+
+    @include hand {
+      position: static;
+      padding: 30px 40px;
+    }
+  }
+
+  .press-clipping-title,
+  .press-clipping-date {
+    margin-bottom: 0;
+  }
+}
+
+.press-clipping-source {
+  @extend %medium;
+
+  &.is-logo {
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    text-indent: -9999px;
+    overflow: hidden;
+    height: 20px;
+
+    @media (min-width: 1500px) {
+      height: 30px;
+    }
+  }
+}
+
+.press-clipping-url {
+  margin-top: $regular-leading * 1em;
+}
+
+.press-clipping-text {
+  margin: 20px 0;
+
+  @include hand {
+    margin: 30px 0;
+  }
+}
+
+.press-clipping-date {
+  margin-bottom: 20px;
+}
+
+.press-clipping-image {
+  margin-bottom: 20px;
+
+  img {
+    width: 100%;
+  }
+}
+
+#press-clipping {
+  width: 100%;
+  max-width: 400px;
+  margin: $large-margin auto;
+  text-align: center;
+
+  .press-clipping-url,
+  .press-clipping-source {
+    color: $headline;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    @extend %small;
+  }
+
+  .press-clipping-blurb {
+    @extend %regular;
+  }
+
+  .press-clipping-title {
+    color: $headline;
+    @extend %regular;
+  }
+}

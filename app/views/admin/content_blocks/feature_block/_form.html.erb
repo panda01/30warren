@@ -1,0 +1,12 @@
+<div class="field">
+  <%= field.text_field :title, placeholder: 'Title (optional)' %>
+</div>
+
+<div class="field">
+  <%= field.rich_text_area :body, placeholder: 'Content' %>
+</div>
+
+<%= field.field :text_field, :subhead, placeholder: 'Subhead' %>
+<%= field.field :rich_text_area, :features, placeholder: 'Content' %>
+
+<%= field.field :select, :width, field.object.aasm(:width).states %>

@@ -1,0 +1,326 @@
+@mixin section($name) {
+  ##{$name}.section { @content; }
+}
+
+@mixin small-screen {
+  @media screen and (max-height: 600px) {
+    @content;
+  }
+
+  @media screen and (max-width: $hand_max_width) {
+    @content;
+  }
+}
+
+@mixin interaction-cover {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+%underline {
+  text-decoration: underline;
+}
+
+%centered-content {
+  margin: 0 auto;
+  @extend %c2;
+
+  @include hand {
+    margin-right: 0;
+  }
+}
+
+%slideshow {
+  position: relative;
+
+  .paginator {
+    position: absolute;
+    top: 0;
+    text-align: center;
+    width: 40px;
+    height: 100%;
+    z-index: 4;
+    transition: opacity 500ms;
+    text-indent: -9999px;
+    overflow: hidden;
+
+    &.previous {
+      @include set-background(arrow-small-left-white, png,
+                              30px 30px,
+                              no-repeat center center,
+                              $color: $transparent-black);
+      left: 0;
+    }
+
+    &.next {
+      @include set-background(arrow-small-right-white, png,
+                              30px 30px,
+                              no-repeat center center,
+                              $color: $transparent-black);
+      right: 0;
+    }
+
+    &.is-disabled,
+    &.slick-disabled {
+      opacity: 0;
+      cursor: default;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .slick-disabled {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .slick-slide {
+    height: auto;
+    min-height: inherit;
+    overflow: hidden;
+  }
+}
+
+%image-with-caption {
+  @extend %whitespacefix;
+
+  &.floor-plan {
+    background-color: white;
+
+    @include hand {
+      @include interaction-cover;
+    }
+
+    .image {
+      cursor: zoom-in;
+      position: relative;
+      overflow: hidden;
+
+      @include hand {
+        @include interaction-cover;
+        cursor: auto;
+
+        img {
+          width: auto;
+          max-width: 100%;
+          max-height: 400px;
+          margin: 0 auto;
+        }
+      }
+
+      .image-padding::after {
+        content: "Click and drag to view";
+        position: absolute;
+        bottom: $gutter;
+        left: $gutters * 2;
+        text-align: center;
+        transform: translateY(100px);
+        background-color: $transparent-black;
+        transition: opacity 500ms ease, transform 1s ease;
+        padding: 6px 10px 3px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        opacity: 0;
+        color: $white;
+        @extend %small;
+      }
+
+      &.zoomed {
+        cursor: zoom-out;
+
+        .image-padding::after {
+          transition: opacity 1s ease 200ms, transform 1s ease 200ms;
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        @include hand {
+          cursor: auto;
+        }
+      }
+
+      .image-padding {
+        padding: $gutters #{$gutters * 2};
+        background-color: $white;
+
+        @include hand {
+          padding: 20px;
+        }
+      }
+
+      .image-proxy {
+        background-size: contain;
+        background-position: center center !important;
+      }
+    }
+  }
+
+  h1,
+  .caption {
+    @include hand {
+      @include margin(bottom, $gutters);
+    }
+  }
+
+  h1,
+  .caption,
+  .image {
+    color: $headline;
+    @extend %inlineblock;
+  }
+
+  h1 {
+    @extend %c2;
+    @extend %large;
+  }
+
+  .caption {
+    color: $headline;
+    @extend %c2;
+    @extend %large;
+  }
+
+  h1,
+  .caption {
+    margin-top: $headline-leading * 0.8em;
+  }
+
+  .image {
+    height: 300px;
+    width: 100%;
+
+    .image-padding {
+      height: 100%;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .image-proxy {
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      height: 100%;
+      width: 100%;
+    }
+
+    &.orientation-vertical .image-proxy {
+      background-size: contain;
+      background-position: center center;
+    }
+
+    img {
+      display: none;
+    }
+
+    @include hand {
+      height: inherit !important;
+
+      img {
+        display: block;
+        width: 100%;
+      }
+    }
+  }
+}
+
+%hand-full-width {
+  @include hand {
+    margin-left: -20px;
+    margin-right: -20px;
+    display: block !important;
+    width: inherit !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+@mixin dropdown($class) {
+  $gutter: 10px;
+
+  position: relative;
+
+  a {
+    position: relative;
+    z-index: 502;
+  }
+
+  #{$class} {
+    margin: 0;
+    display: inline-block;
+    cursor: pointer;
+    @extend %small;
+
+    ul {
+      min-width: 100%;
+      width: auto;
+      text-align: center;
+      background-color: $white;
+      z-index: 501;
+      box-shadow: 0 0 9px rgba(0, 0, 0, .2);
+      box-sizing: content-box;
+      white-space: nowrap;
+      padding: $gutter * 3.2 $gutter $gutter;
+
+      position: absolute;
+      right: -$gutter;
+      top: -9999px;
+
+      opacity: 0;
+      transition: opacity 300ms, top 0s 300ms;
+    }
+
+    li {
+      display: block;
+      margin: 0;
+    }
+
+    a {
+      display: block;
+      transition: color 300ms;
+
+      &:hover {
+        color: $text !important;
+      }
+    }
+  }
+
+  &.is-open #{$class},
+  #{$class}:hover {
+    &::before {
+      opacity: 1;
+    }
+  }
+
+  &.is-open {
+    #{$class} ul {
+      top: -$gutter;
+      opacity: 1;
+      transition: opacity 300ms, top 0s;
+    }
+  }
+
+  &.is-open a {
+    color: $set1-mid !important;
+  }
+}
+
+@mixin anchor {
+  &::after {
+    content: "";
+    height: 12px;
+    width: 35px;
+    background-color: $set1-light;
+    margin-top: $small-margin;
+    display: block;
+  }
+}

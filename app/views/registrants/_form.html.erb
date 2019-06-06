@@ -1,0 +1,65 @@
+<%= form_for(@registrant, remote: true) do |f| %>
+
+  <div class="introduction">
+    <p><%= t('registrant.introduction') %></p>
+  </div>
+
+  <% if @registrant.errors.any? %>
+    <div class="notice error">
+      <ul>
+        <% @registrant.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="fields">
+
+    <div class="registrant-information">
+      <div class="field text-field">
+        <%= f.text_field :first_name, placeholder: 'First Name*' %>
+      </div>
+
+      <div class="field text-field">
+        <%= f.text_field :last_name, placeholder: 'Last Name*' %>
+      </div>
+
+      <div class="field text-field">
+        <%= f.text_field :email, placeholder: 'Email*' %>
+      </div>
+
+      <div class="field text-field">
+        <%= f.text_field :phone, placeholder: 'Phone Number' %>
+      </div>
+
+      <div class="field text-field">
+        <%= f.text_field :zip_code, placeholder: 'Zip Code' %>
+      </div>
+    </div>
+
+    <div class="unit-preferences">
+      <div class="field dropdown">
+        <%= f.select :price_range, Registrant.price_range_options, include_blank: 'Price Range' %>
+      </div>
+
+      <div class="field dropdown">
+        <%= f.select :residence_type, Registrant.residence_type_options, include_blank: 'Residence Type' %>
+      </div>
+
+      <div class="field dropdown">
+        <%= f.select :referral_channel, Registrant.referral_channel_options, include_blank: 'How did you hear about us?' %>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="actions-register">
+    <%= f.submit 'Register', class: 'register-button' %>
+  </div>
+
+  <div class="field-notes">
+    * Required fields
+  </div>
+
+<% end %>

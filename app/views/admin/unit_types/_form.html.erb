@@ -1,0 +1,21 @@
+<%= f.field :text_field,  :name %>
+
+<%= f.field :text_area,   :description %>
+<%= f.field :text_field,  :number_of_bedrooms %>
+<%= f.field :text_field,  :number_of_bathrooms %>
+<%= f.field :text_field,  :number_of_powder_rooms %>
+<%= f.field :check_box,   :penthouse %>
+<%= f.field :check_box,   :duplex %>
+
+<%= f.field :text_field,  :interior_square_feet %>
+<%= f.field :text_field,  :exterior_square_feet %>
+<%= f.field :text_field,  :interior_square_meters %>
+<%= f.field :text_field,  :exterior_square_meters %>
+
+<%= f.field :images_field, :floor_plans %>
+<%= f.field :image_field,  :floor_plan_pdf %>
+<%= f.field :images_field, :renderings do |photo| %>
+  <% photo.field :text_area, :caption %>
+<% end %>
+
+<%= f.content_block_fields %>

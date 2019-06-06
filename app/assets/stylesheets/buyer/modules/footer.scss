@@ -1,0 +1,81 @@
+.floating-footer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 9999;
+  background-color: $background-footer;
+  padding: 8px 20px 5px;
+  height: 32px;
+  transition: transform 400ms;
+  transform: translateY(300px);
+
+  &, & a {
+    color: $text-footer;
+  }
+
+  &.is-available {
+    transform: translateY(0);
+  }
+
+  @include hand {
+    position: relative;
+    left: 0;
+    right: 0;
+    padding: 30px 20px;
+    margin-top: 40px;
+  }
+
+  .logomark {
+    position: absolute;
+    top: -45px;
+    left: 50%;
+    margin-left: -15px;
+  }
+
+  .project-details,
+  .links {
+    div {
+      display: inline-block;
+    }
+
+    @include hand {
+      float: none !important;
+    }
+  }
+
+  .project-details {
+    float: left;
+    @extend %small;
+
+    @include hand {
+      margin-bottom: 7px;
+    }
+
+    div {
+      @include hand {
+        display: block;
+      }
+    }
+
+    .project-name {
+      @media (max-width: 920px) {
+        display: block;
+      }
+    }
+  }
+
+  .links {
+    float: right;
+    font-size: 0;
+
+    div {
+      margin-right: 20px;
+      @extend %small;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}

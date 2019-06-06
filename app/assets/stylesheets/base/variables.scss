@@ -1,0 +1,69 @@
+// Colors
+$black:      rgb(65, 65, 65);
+$white:      rgb(255, 255, 255);
+
+$background: $white;
+$background-footer: $black;
+$text-footer: $white;
+$caption:    $white;
+$text:       $black;
+$headline:   $black;
+$button:     $black;
+$rule:       lighten($text, 7);
+$input:      $white;
+$input-rule: $black;
+$selected:   $white;
+$active:     rgb(255, 255, 255);
+$error:      darken(red, 15);
+
+$home-header: $black;
+$navigation: $white;
+$sub-navigation: $white;
+$navigation-text: $black;
+$navigation-active: $black;
+
+$unit:        rgb(138, 134, 130);
+$unit-medium: rgb(105,  95,  90);
+$unit-large:  rgb( 85,  75,  70);
+
+$shadow: rgb(85, 75, 70);
+
+$transparent-black: transparentize($black, 0.15);
+
+// Backward compatability for old styles
+$gray: $text;
+$mid_gray:   rgb(167,164,162);
+$light_gray: rgb(226,225,224);
+$dark_gray:  rgb(104,95,90);
+
+// Fonts
+$sans: 'neuzeit', Helvetica, Arial, sans-serif;
+
+// Element sizes
+$section_divider_height: 8px;
+
+// Spacing
+$gutter:       20px;
+$gutters:      $gutter * 2;
+$hand_gutter:  10px;
+$hand_gutters: $hand_gutter * 2;
+
+// Margins
+$large-margin:  100px;
+$margin:        40px;
+$small_margin:  15px;
+$tiny_margin:   7px;
+
+// Breakpoints
+$ext_min_width:  1400px;
+$ext_max_width:  9000000px;
+
+$desk_min_width:  960px;
+$desk_max_width:  1399px;
+
+$tab_min_width:  768px;
+$tab_max_width:  959px;
+
+$hand_min_width:  0;
+$hand_max_width:  767px;
+$hand_unit_width: 100%;

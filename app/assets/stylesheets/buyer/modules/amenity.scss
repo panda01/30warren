@@ -1,0 +1,86 @@
+.amenities {
+  @media only screen and (max-width: $hand_max_width) {
+    margin-top: 30px;
+  }
+
+  .image {
+    width: 50%;
+    height: 100%;
+    vertical-align: middle;
+    @extend %hand-full-width;
+
+    .image-proxy {
+      background-size: cover !important;
+    }
+  }
+}
+
+.amenity {
+  height: auto !important;
+  min-height: inherit;
+  @extend %image-with-caption;
+
+  @include hand {
+    @include margin(bottom, $margin);
+    min-height: inherit !important;
+
+    &:last-child,
+    &:last-child .image {
+      margin-bottom: 0;
+    }
+
+    @media only screen and (max-width: $hand_max_width) {
+      margin-bottom: 30px;
+    }
+  }
+
+  li, p {
+    @include margin(bottom, $small_margin);
+
+    @media only screen and (max-width: $hand_max_width) {
+      margin-bottom: 30px;
+    }
+  }
+
+  .text {
+    width: 50%;
+    display: inline-block;
+    vertical-align: middle;
+
+    @media only screen and (max-width: $hand_max_width) {
+      width: 100%;
+    }
+
+    .body {
+      width: 100%;
+      max-width: 440px;
+      margin: 0 auto;
+      padding: 0 40px;
+
+      @media only screen and (max-width: $hand_max_width) {
+        padding: 0;
+        max-width: 100%;
+      }
+
+      h1 {
+        text-transform: uppercase;
+        width: 100%;
+
+        @media only screen and (max-width: $hand_max_width) {
+          margin: 0;
+        }
+      }
+
+      .caption {
+        font-size: 15px;
+        width: 100%;
+        color: #8a8682;
+        line-height: 18px;
+
+        @media only screen and (max-width: $hand_max_width) {
+          margin: 0;
+        }
+      }
+    }
+  }
+}

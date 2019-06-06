@@ -1,0 +1,39 @@
+.press-decoration {
+  position: relative;
+  width: 20%;
+  padding-bottom: 16%;
+  float: left;
+  border: 0.5px solid $white;
+
+  @include desk {
+    width: 25%;
+    padding-bottom: 20%;
+  }
+
+  @include tab {
+    width: 33.3333333%;
+    padding-bottom: 26%;
+  }
+
+  @include hand {
+    width: 100%;
+    padding-bottom: 90%;
+  }
+}
+
+.press-decoration__image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 1s;
+
+  &.is-active {
+    opacity: 1;
+  }
+}

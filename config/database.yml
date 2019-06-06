@@ -1,0 +1,27 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: root
+  password:
+  # socket: /tmp/mysql.sock
+
+development:
+  <<: *default
+  database: p30warren_full_development
+
+test:
+  <<: *default
+  database: p30warren_full_test
+
+staging:
+  <<: *default
+  database: p30warren_full_staging
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+
+production:
+  <<: *default
+  database: p30warren_full
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>

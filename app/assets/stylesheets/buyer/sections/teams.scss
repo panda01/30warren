@@ -1,0 +1,53 @@
+@include section(team) {
+  padding-bottom: $large-margin;
+
+  .team-member {
+    padding: 60px 40px;
+
+    @include hand {
+      padding: 40px 30px;
+    }
+
+    &:nth-child(2n) {
+      background-color: rgb(220, 219, 218);
+    }
+
+    > * {
+      max-width: 570px;
+      width: 100%;
+      margin: 0 auto 0;
+    }
+
+    header {
+      margin-bottom: $gutter;
+    }
+
+    .name {
+      text-transform: uppercase;
+      color: $headline;
+      display: inline-block;
+      letter-spacing: 0.1em;
+      font-size: $headline-size;
+      line-height: $headline-leading;
+    }
+
+    .role {
+      color: $headline;
+      margin-top: 0.6em;
+      margin-bottom: $regular-leading * 1em;
+      @extend %headline;
+    }
+
+    .description {
+      @extend %regular;
+    }
+
+    .url {
+      margin-top: $gutter;
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      @extend %small;
+    }
+  }
+}

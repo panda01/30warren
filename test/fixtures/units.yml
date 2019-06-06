@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  floor: 1
+  letter: MyString
+  name: MyString
+  number_of_bedrooms: 1
+  number_of_bathrooms: 1
+  price: 1
+  interior_square_feet: 1
+  exterior_square_feet: 1
+  status: MyString
+  active: true
+
+two:
+  floor: 1
+  letter: MyString
+  name: MyString
+  number_of_bedrooms: 1
+  number_of_bathrooms: 1
+  price: 1
+  interior_square_feet: 1
+  exterior_square_feet: 1
+  status: MyString
+  active: true

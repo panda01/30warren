@@ -1,0 +1,8 @@
+<%= f.field :text_field, :first_name %>
+<%= f.field :text_field, :last_name %>
+<%= f.field :text_field, :email %>
+<%= f.field :text_field, :phone %>
+<%= f.field :text_field, :zip_code %>
+<%= f.field :select, :price_range, Registrant.price_range_options, include_blank: true %>
+<%= f.field :select, :residence_type, Registrant.residence_type_options, include_blank: true %>
+<%= f.field :select, :referral_channel, Registrant.referral_channel_options, include_blank: true %>

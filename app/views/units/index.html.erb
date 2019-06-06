@@ -1,0 +1,76 @@
+<% content_for(:page_title, 'See Available Condominium Residences for Sale at 30 Warren in Tribeca') %>
+<% content_for(:page_description, "Click here to view floorplans and pricing on the One, Two, and Three Bedroom Condominium Residences for Sale at 30 Warren in Tribeca") %>
+
+<% if @units.any? %>
+  <div class="unit-previewer">
+    <div class="building-section">
+      <div class="building-section__inner">
+        <div class="building-section__diagram">
+          <%= embedded_svg 'section2.svg' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="units">
+      <div class="units__headers">
+        <div class="units__header name">
+          Residence
+        </div>
+
+        <div class="units__header bedrooms">
+          Beds
+        </div>
+
+        <div class="units__header bathrooms">
+          Baths
+        </div>
+
+        <div class="units__header interior">
+          Interior <span class="unit-of-measurement">Sq Ft</span>
+        </div>
+
+        <div class="units__header exterior">
+          Exterior <span class="unit-of-measurement">Sq Ft</span>
+        </div>
+
+        <div class="units__header exposure">
+          Exposure
+        </div>
+
+        <div class="units__header price">
+          Price
+        </div>
+
+        <div class="units__header monthly-charges">
+          Estimated Monthly Common Charges
+        </div>
+
+        <div class="units__header monthly-taxes">
+          Estimated Monthly Taxes
+        </div>
+
+        <div class="units__header floor-plan-pdf">
+          Floor Plans
+        </div>
+
+      </div>
+
+      <% @units.group_by(&:group).to_a.sort_by(&:first).each do |(group, units)| %>
+        <div class="units__size-group">
+          <header>
+            <%= group %>
+          </header>
+
+          <%= render units.sort_by(&:price) %>
+        </div>
+      <% end %>
+
+      <div class="disclaimer">
+        <p><%= t('legal.terms') %></p>
+        <p><%= t('legal.dimensions') %></p>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <%= render "shared/show_content_blocks" %>
+<% end %>

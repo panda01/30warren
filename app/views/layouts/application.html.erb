@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= page_title %></title>
+    <%= csrf_meta_tags %>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="<%= page_description %>">
+
+    <link rel="shortcut icon" type="image/x-icon" href="<%= asset_path('favicon@2x.gif') %>"/>
+
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+
+    <%= javascript_include_tag 'application' %>
+
+    <%= render partial: 'social' %>
+
+    <script>
+      window.pageSlug = "<%= @page.slug %>";
+      L.mapbox.accessToken = '<%= Rails.application.secrets.mapbox_access_token %>';
+    </script>
+  </head>
+
+  <body class="<%= @page.slug %> <%= @page.slug %>-<%= params[:action] %>">
+    <script type="text/javascript">
+      // From http://dieulot.net/css-retina-hairline
+      if (window.devicePixelRatio && devicePixelRatio >= 2) {
+        var testElem = document.createElement("div");
+        testElem.style.border = ".5px solid transparent";
+        document.body.appendChild(testElem);
+        if (testElem.offsetHeight == 1) {
+          document.querySelector("html").classList.add("hairlines");
+        }
+        document.body.removeChild(testElem);
+      }
+      // This assumes this script runs in <body>, if it runs in <head> wrap it in $(document).ready(function() {   })
+    </script>
+
+    <%= render partial: 'shared/header'%>
+
+    <div class="wrapper">
+
+      <a name="top"></a>
+
+      <%= yield %>
+
+    </div>
+
+    <%= render partial: 'shared/footer' %>
+
+    <%= render partial: 'shared/lightbox' %>
+
+    <%= render partial: 'remarketing' %>
+    <%= render partial: 'ga' %>
+
+  </body>
+</html>

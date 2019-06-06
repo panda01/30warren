@@ -1,0 +1,35 @@
+.panorama-block {
+  position: relative;
+  height: 100%;
+
+  @include hand {
+    margin-bottom: $large-margin;
+  }
+
+  h1 {
+    font-size: $headline-size;
+    line-height: $headline-leading;
+    color: $white;
+    pointer-events: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 190px $gutters 62px;
+    background: linear-gradient(180deg,
+                                rgba(37, 34, 40, 0),
+                                rgba(37, 34, 40, 0.05) 65%,
+                                rgba(37, 34, 40, 0.15));
+    text-align: center;
+    text-shadow: 0 0 7px rgba(37, 34, 40, 0.4);
+
+    @include hand {
+      position: static;
+      background: none;
+      padding: 0 $gutters;
+      margin-bottom: $gutter / 2;
+      text-shadow: none;
+      color: $headline;
+    }
+  }
+}

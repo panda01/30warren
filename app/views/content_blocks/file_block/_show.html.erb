@@ -1,0 +1,15 @@
+<div class="content-block <%= css_class(cb) %>" id="<%= css_id(cb) %>">
+  <header>
+    <h2><%= cb.title %></h2>
+
+    <% if cb.subtitle? %>
+      <h3><%= cb.subtitle %></h3>
+    <% end %>
+  </header>
+
+  <div class="body">
+    <%= f cb.body %>
+
+    <%= link_to cb.link_text, cb.file.attachment.url, class: 'file-link', target: '_blank' if cb.file.present? %>
+  </div>
+</div>

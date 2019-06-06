@@ -1,0 +1,164 @@
+.map-block,
+.places-map-container,
+.places-map {
+  height: 100%;
+}
+
+.places-map-container {
+  position: relative;
+
+  @include hand {
+    height: auto !important;
+  }
+}
+
+.places-map {
+  z-index: 0;
+
+  @include hand {
+    height: 400px;
+  }
+
+  .leaflet-popup-content {
+    @extend %small;
+    padding: 7px 20px 5px 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,.2);
+    line-height: 1;
+    font-family: $sans;
+
+    .marker-title {
+      color: $text;
+      font-weight: normal;
+      margin-bottom: 5px;
+    }
+
+    .marker-description {
+      color: $background;
+    }
+
+    .marker-aliases {
+      color: $text;
+      font-weight: normal;
+      margin-top: 5px;
+      width: 300px;
+      columns: 2;
+    }
+  }
+
+  .leaflet-popup-tip-container {
+    position: relative;
+    z-index: 1;
+    top: -1px;
+  }
+
+  .place-map-close-button {
+    font-size: 17px;
+    position: absolute;
+    top: 5px;
+    right: 7px;
+    color: $text;
+    cursor: pointer;
+  }
+}
+
+.places-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 280px;
+  background-color: $text;
+  color: $input;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  @extend %small;
+
+  @include hand {
+    position: static;
+    width: 100%;
+  }
+}
+
+.places-nav-section {
+  position: relative;
+  border-top: 1px solid $background;
+
+  &:first-child {
+    border-top: 0;
+  }
+
+  &.is-food-drink-section {
+    .places-nav-section-label,
+    .places-nav-section-places {
+      background-color: rgb(11, 101, 88);
+      border-color: lighten(rgb(11, 101, 88), 5);
+    }
+  }
+
+  &.is-shopping-wellness-section {
+    .places-nav-section-label,
+    .places-nav-section-places {
+      background-color: rgb(157, 41, 48);
+      border-color: lighten(rgb(157, 41, 48), 5);
+    }
+  }
+
+  &.is-schools-culture-section {
+    .places-nav-section-label,
+    .places-nav-section-places {
+      background-color: rgb(204, 141, 51);
+      border-color: lighten(rgb(204, 141, 51), 5);
+    }
+  }
+
+  &.is-landmarks-green-spaces-section {
+    .places-nav-section-label,
+    .places-nav-section-places {
+      background-color: rgb(69, 126, 169);
+      border-color: lighten(rgb(69, 126, 169), 5);
+    }
+  }
+}
+
+.places-nav-section-label {
+  display: block;
+  text-align: center;
+  line-height: 40px;
+  padding-top: 3px;
+  color: $input;
+  cursor: pointer;
+
+  &:after {
+    content: "";
+    border-top: 9px solid $input;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    position: absolute;
+    right: 15px;
+    top: 16px;
+    transition: transform .5s;
+
+    .open & {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.places-nav-section-places {
+  display: none;
+  border-top: 1px solid $background;
+  padding: 14px 15px 13px;
+  overflow: scroll;
+}
+
+.places-nav-place {
+  cursor: pointer;
+
+  &.active .places-nav-place-text {
+    color: white;
+    text-decoration: underline;
+  }
+}
+
+.places-nav-place-text {
+  display: inline-block;
+}

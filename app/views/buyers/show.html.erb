@@ -1,0 +1,24 @@
+<%= render partial: 'welcome' %>
+
+<div class="content">
+  <header class="content-header">
+    <div class="floating-content">
+      <div class="logo">
+        <%= t("project.name") %>
+      </div>
+
+      <%= jump_links @dashboard.sections, format: :titleize %>
+
+      <div class="menu-toggle"></div>
+    </div>
+  </header>
+
+  <div class="content-container">
+    <div class="sections">
+      <%= render partial: 'section', collection: @dashboard.sections.keys %>
+    </div>
+  </div>
+
+  <%= render 'buyers/footer' %>
+
+</div>

@@ -1,0 +1,41 @@
+<div class="content-block <%= css_class(cb) %>
+            <%= 'is-half-width' if cb.is_half_width? %>
+            <%= 'is-full-width' if !cb.is_half_width? %>
+            <%= 'is-contained' if cb.contain? %>"
+      id="<%= css_id(cb) %>"
+      <% if cb.image? %>
+        data-width="<%= cb.image.width %>"
+        data-height="<%= cb.image.height %>"
+      <% end %>
+      data-advance-width="<%= cb.advance_width %>">
+
+  <div class="image-block__image">
+    <% if cb.image? %>
+      <%= image_tag_with_placeholder cb.image,
+                                     size: :c8,
+                                     lightboxable: cb.enlargeable?,
+                                     background: true %>
+    <% end %>
+
+    <% if cb.caption? || cb.title? %>
+      <div class="image-block__details">
+        <% if cb.title? %>
+          <div class="image-block__title">
+            <%= cb.title %>
+          </div>
+        <% end %>
+
+        <% if cb.caption? %>
+          <div class="image-block__caption">
+            <%= f(cb.caption) %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
+    <% if cb.title_card? %>
+      <a href="#" class="read-more">Read More</a>
+    <% end %>
+  </div>
+
+</div>

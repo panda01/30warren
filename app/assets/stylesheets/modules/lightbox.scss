@@ -1,0 +1,323 @@
+.lightboxable {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    height: 22px;
+    width: 22px;
+    opacity: 0;
+    background-image: image-url('plus.svg');
+    background-size: 22px 22px;
+    background-repeat: no-repeat;
+    transition: opacity 300ms;
+  }
+
+  &:hover {
+    cursor: pointer;
+    transition: opacity 300ms;
+
+    &::before {
+      opacity: 1;
+    }
+  }
+}
+
+#lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparentize($background, 0.03);
+  @extend %small;
+
+  .lightbox-title {
+    position: absolute;
+    bottom: $gutters;
+    left: $gutters;
+    font-family: $sans;
+    color: $black;
+    @extend %small;
+
+    @include hand {
+      display: none;
+    }
+
+    a {
+      color: $black;
+      border-bottom: 1px solid $black !important;
+    }
+
+    .orientation,
+    .area {
+      margin-bottom: $small_margin;
+    }
+  }
+
+  a { border: none; }
+
+  .spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @include transform(translate(-50%, -50%));
+  }
+
+  .slick-counter {
+    @include transform(translateX(-50%));
+    position: fixed;
+    top: 25px;
+    left: 80px;
+    font-family: $sans;
+    color: $black;
+    @extend %small;
+
+    .availability & {
+      display: none;
+    }
+  }
+
+  .arrow {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 19px;
+    cursor: pointer;
+
+    &.next {
+      right: 20px;
+      @include set-background(arrow-small-right-black, png, 30px 30px, no-repeat center center);
+    }
+
+    &.prev {
+      right: 60px;
+      @include set-background(arrow-small-left-black, png, 30px 30px, no-repeat center center);
+    }
+  }
+}
+
+#close-lightbox {
+  @include set-background(close-button-black, png, 20px 20px);
+  position: fixed;
+  top: 23px;
+  left: 20px;
+  height: 20px;
+  width: 20px;
+}
+
+#lightbox-slides {
+  width: 100%;
+  height: 100%;
+}
+
+.lightbox-slide {
+  width: 100%;
+  height: 100%;
+  padding: 65px 50px 20px 50px;
+
+  .lightbox-slide-content {
+    height: 100%;
+    position: relative;
+  }
+}
+
+#lightbox .slick-slide,
+.lightbox-slide {
+  .image {
+    padding: 0 !important;
+  }
+}
+
+#lightbox .slick-slide,
+.lightbox-slide,
+.page.slick-slide {
+
+  .image {
+    height: 100%;
+    width: 100%;
+    background: transparent none no-repeat scroll center center;//top right;
+    background-size: contain;
+    position: relative;
+    overflow: hidden;
+
+    // img is only used for checking when an image is loaded
+    img {
+      display: none;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: $background;
+      opacity: 0;
+      transition: opacity 300ms;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-top: -10px;
+      margin-left: -1px;
+      width: 2px;
+      height: 20px;
+      opacity: 0;
+      background-color: $headline;
+      transition: opacity 300ms;
+      animation: spin 1s infinite linear;
+    }
+
+    &.loading::after,
+    &.loading::before {
+      opacity: 1;
+    }
+
+    &.zoomed {
+
+      &,
+      & .image-proxy {
+        background-image: none !important;
+      }
+
+      img {
+        cursor: move;
+        display: block !important;
+        max-width: 70%;
+        max-height: 70%;
+      }
+
+      .image-container {
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        bottom: -50%;
+        left: -50%;
+      }
+
+      &::after,
+      &::before {
+        display: none;
+      }
+    }
+  }
+
+  .caption {
+    display: none;
+  }
+
+  &.availability-slide {
+    .lightbox-slide-content {
+      margin-left: 200px;
+
+      @include hand {
+        margin-left: 0;
+      }
+    }
+  }
+
+  &.floor-plan {
+    .lightbox-slide-content {
+      padding: $gutters;
+      position: relative;
+    }
+
+    .image {
+      background-position: center center;
+      cursor: zoom-in;
+
+      &.zoomed {
+        cursor: zoom-out;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+
+.slick-track {
+  height: 100%;
+}
+
+.slick-slide {
+  display: none;
+  float: left;
+  height: 100%;
+  min-height: 100%;
+
+  img {
+    display: block;
+  }
+
+  &.slick-loading img {
+    display: none;
+  }
+
+  &.dragging img {
+    pointer-events: none;
+  }
+
+  .slick-initialized & {
+    display: block;
+  }
+
+  .slick-loading & {
+    visibility: hidden;
+  }
+}
+
+.slick-list {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+
+  &:focus {
+    outline: none;
+  }
+}
+.slick-slider {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -moz-box-sizing: border-box;
+  -webkit-touch-callout: none;
+       -ms-touch-action: none;
+           touch-action: none;
+  -webkit-user-select: none;
+   -khtml-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+
+.slick-slider .slick-list, .slick-track, .slick-slide, .slick-slide img {
+  -webkit-transform: translate3d(0, 0, 0);
+     -moz-transform: translate3d(0, 0, 0);
+      -ms-transform: translate3d(0, 0, 0);
+       -o-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}

@@ -1,0 +1,74 @@
+<div class="places-map-container">
+  <div id="places-map" class="places-map"></div>
+
+  <nav class="places-nav">
+    <ul>
+      <% places_by_category(places.flat_map(&:alias_locations)).each do |category, places| %>
+        <% next if category == 'Home' %>
+        <li class="places-nav-section is-<%= category.parameterize %>-section">
+          <div class="places-nav-section-label">
+            <%= category %>
+          </div>
+          <ul class="places-nav-section-places">
+            <% places.sort_by(&:name).each do |place| %>
+              <li class="places-nav-place" data-slug="<%= place.slug %>">
+                <div class="places-nav-place-text"><%= place.name %></div>
+              </li>
+            <% end %>
+          </ul>
+        </li>
+      <% end %>
+    </ul>
+  </nav>
+</div>
+
+<link href='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.css' rel='stylesheet' />
+<script>
+  var mapPlaces = <%== places.to_json %>
+
+  var DOT_SIZE = 15;
+  var ICONS = {
+    "Home": {
+      iconUrl: '<%= asset_path('marker-home.png') %>',
+      iconSize: [25, 45],
+      iconAnchor: [-5, 22],
+      className: 'places-map-home-icon'
+    },
+    "Footprint": {
+      iconUrl: '<%= asset_path('marker-footprint.png') %>',
+      iconSize: [24, 36],
+      iconAnchor: [12, 18],
+      className: 'places-map-home-footprint'
+    },
+    "Food & Drink": {
+      iconUrl: '<%= asset_path('marker-food-drink.png') %>',
+      iconSize: [DOT_SIZE, DOT_SIZE],
+      iconAnchor: [DOT_SIZE / 2, DOT_SIZE /2],
+      className: 'places-map-dot-icon'
+    },
+    "Shopping & Wellness": {
+      iconUrl: '<%= asset_path('marker-shopping-wellness.png') %>',
+      iconSize: [DOT_SIZE, DOT_SIZE],
+      iconAnchor: [DOT_SIZE / 2, DOT_SIZE /2],
+      className: 'places-map-dot-icon'
+    },
+    "Schools & Culture": {
+      iconUrl: '<%= asset_path('marker-schools-culture.png') %>',
+      iconSize: [DOT_SIZE, DOT_SIZE],
+      iconAnchor: [DOT_SIZE / 2, DOT_SIZE /2],
+      className: 'places-map-dot-icon'
+    },
+    "Landmarks & Green Spaces": {
+      iconUrl: '<%= asset_path('marker-landmarks.png') %>',
+      iconSize: [DOT_SIZE, DOT_SIZE],
+      iconAnchor: [DOT_SIZE / 2, DOT_SIZE /2],
+      className: 'places-map-dot-icon'
+    },
+    dot: {
+      iconUrl: '<%= asset_path('marker-default.png') %>',
+      iconSize: [DOT_SIZE, DOT_SIZE],
+      iconAnchor: [DOT_SIZE / 2, DOT_SIZE /2],
+      className: 'places-map-dot-icon'
+    }
+  };
+</script>

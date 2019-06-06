@@ -1,0 +1,275 @@
+var pinStyles = {
+  'home': {
+    url: "<%= asset_path('logomark@2x.png') %>",
+    scaledSize: new google.maps.Size(50, 74),
+    anchor: new google.maps.Point(25, 70)
+  },
+
+  'default': {
+    url: "<%= asset_path('gpin-grey@2x.png') %>",
+    scaledSize: new google.maps.Size(15, 15)
+  }
+};
+
+var styles = [
+  {
+    stylers: [
+      { visibility: "off" },
+      { hue: "#ccc" },
+      { saturation: -100 }
+    ]
+  },{
+    featureType: "road",
+    elementType: "geometry",
+    stylers: [
+      { lightness: 100 },
+      { visibility: "simplified" }
+    ]
+  },{
+    "featureType": "road",
+    "stylers": [
+      { "visibility": "simplified" }
+    ]
+  },{
+    "featureType": "poi",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "landscape.man_made",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "transit",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "landscape",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "road.local",
+    "elementType": "labels.icon",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  }
+];
+
+GoogleMap = function(element, locations, home) {
+  var self = this;
+
+  this.$element = element;
+  this.locations = locations;
+
+  this.initialLatitude = parseFloat(home[1]);
+  this.initialLongitude = parseFloat(home[2]);
+
+  this.mapOptions.center = {
+    lat: this.initialLatitude,
+    lng: this.initialLongitude
+  },
+
+  this.map = new google.maps.Map(this.$('.map-canvas').get(0), this.mapOptions);
+  this.infowindow = new google.maps.InfoWindow();
+
+  this.addListener(this.infowindow, 'closeclick', function() {
+    self.$('.places-column li').removeClass('current');
+  });
+
+  var marker, i;
+
+  for (i = 0; i < this.locations.length; i++) {
+    marker = new google.maps.Marker({
+      position: new google.maps.LatLng(this.locations[i][1], this.locations[i][2]),
+      map: this.map,
+      icon: this.pinImage(i)
+    });
+
+    if (this.locations[i][6] == 'home') {
+      marker.setZIndex(9999);
+    }
+
+    this.locations[i].push(marker);
+
+    this.addListener(marker, 'click', (function(i, marker) {
+      return function() {
+        self.openLocationWindow(self.locations[i], marker)
+      }
+    })(i, marker));
+  }
+
+  this.addListener(this.map, 'zoom_changed', this.resizeMarkers.bind(this));
+
+  this.resizeMarkers()
+
+  this.addListener(this.map, 'center_changed', function() {
+    var size = [
+      this.getDiv().offsetWidth,
+      this.getDiv().offsetHeight
+    ].join('x');
+
+    if (!this.get('size') || size === this.get('size')) {
+       this.setValues({
+         size: size,
+         _center: this.getCenter()
+       });
+    } else {
+      self.addListenerOnce(self.map, 'idle', function(){
+        this.setValues({
+          size: size,
+          center: this.get('_center')
+        });
+      });
+    }
+  });
+
+  google.maps.event.trigger(this.map, 'center_changed', {});
+
+  this.$('.places-column li').click(function() {
+    var $place = $(this);
+
+    self.scrollIntoView();
+    self.$('.places-column li').removeClass('current');
+    $place.addClass('current');
+
+    self.openBalloon($place.attr('id'));
+  });
+};
+
+GoogleMap.prototype.mapOptions = {
+  zoom: 16,
+  zoomControl: true,
+  zoomControlOptions: {
+    style: google.maps.ZoomControlStyle.DEFAULT
+  },
+  scrollwheel: false,
+  disableDefaultUI: true,
+  mapTypeId: google.maps.MapTypeId.ROADMAP,
+  styles: styles
+}
+
+GoogleMap.prototype.marker = {
+ min: [15, 15],
+ max: [15, 15]
+}
+
+GoogleMap.prototype.home = {
+  min: [50, 74],
+  max: [50, 74]
+}
+
+GoogleMap.prototype.resizeMarkers = function() {
+  var zoom = Math.max(this.map.getZoom() - this.mapOptions.zoom, 0);
+
+  for (var i = 0; i < this.locations.length; i++) {
+    if (this.locations[i][6] === "home") {
+      var kind = "home";
+    } else {
+      var kind = "marker";
+    }
+
+    var min = this[kind].min;
+    var max = this[kind].max;
+
+    var width = this.sizeFromZoom(min[0], max[0], zoom);
+    var height = this.sizeFromZoom(min[1], max[1], zoom);
+
+    var marker = this.locations[i][7];
+    var size = new google.maps.Size(width, height);
+    var icon = marker.getIcon().url;
+    var anchor = this.pinImage(i).anchor || new google.maps.Point(height / 2, height / 2);
+
+    var image = {
+      url: icon,
+      scaledSize: size,
+      anchor: anchor
+    }
+
+    marker.setIcon(image);
+  }
+}
+
+GoogleMap.prototype.sizeFromZoom = function(min, max, zoom) {
+  return Math.min(max, Math.round(min * Math.pow(2, zoom)))
+}
+
+GoogleMap.prototype.setMapForMarkers = function(category_slug) {
+  for (var i = 0; i < this.locations.length; i++) {
+    var map_to_use = (this.locations[i][6] == category_slug) || (this.locations[i][6] == 'home') ? this.map : null;
+    this.locations[i][7].setMap(map_to_use);
+  }
+}
+
+GoogleMap.prototype.openBalloonFromHash = function() {
+  if (window.location.hash) {
+    this.openBalloon(window.location.hash);
+  }
+}
+
+GoogleMap.prototype.openBalloon = function(hash) {
+  var locationName = hash.replace('#', '');
+
+  for (var i = 0; i < this.locations.length; i++) {
+
+    var loc = this.locations[i];
+    var marker = loc[7];
+
+    // Set current_location
+    var current_location = loc[5];
+
+    // Check for match between hash and location
+    // and pop up a balloon if they do
+    if (locationName === current_location) {
+      this.openLocationWindow(this.locations[i], marker);
+    }
+  }
+}
+
+GoogleMap.prototype.openLocationWindow = function(location, marker) {
+  var parts = [];
+
+  parts.push("<div class='scrollbar-container'>");
+  parts.push("<div class='scrollbar-content'>");
+  parts.push('<span>' + location[0] + '</span><br />' + location[3]);
+  parts.push("</div>");
+  parts.push("</div>");
+
+  newContent = parts.join('');
+
+  this.infowindow.setContent(newContent);
+  this.infowindow.open(this.map, marker);
+}
+
+GoogleMap.prototype.pinImage = function(x) {
+  return pinStyles[this.locations[x][6]] || pinStyles['default'];
+}
+
+GoogleMap.prototype.addListener = function(object, event, func) {
+  this._listen('addListener', object, event, func);
+}
+
+GoogleMap.prototype.addListenerOnce = function(object, event, func) {
+  this._listen('addListenerOnce', object, event, func);
+}
+
+GoogleMap.prototype._listen = function(method, object, event, func) {
+  var listener = google.maps.event[method](object, event, func);
+
+  $(document).one('page:before-change', function() {
+    google.maps.event.removeListener(listener);
+  });
+}
+
+GoogleMap.prototype.$ = function(selector) {
+  return this.$element.find(selector);
+}
+
+GoogleMap.prototype.scrollIntoView = function() {
+  var offset_y = this.$element.offset().top - 80;
+
+  $('body, html').animate({ 'scrollTop': offset_y });
+}

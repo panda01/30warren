@@ -1,0 +1,62 @@
+<div class="unit sub-section"
+     id="residences-<%= unit.door_number.parameterize %>"
+     data-unit-name="<%= unit.door_number %>">
+
+  <header>
+    <h2><%= unit.name %></h2>
+  </header>
+
+  <div class="images">
+    <div class="slideshow-container">
+      <div class="slideshow-height">
+        <div class="slideshow">
+          <%= render partial: 'buyers/units/unit_image',
+                     collection: unit.floor_plans,
+                     layout: 'buyers/layouts/page' %>
+
+          <%= render partial: 'buyers/units/unit_image',
+                     collection: unit.renderings,
+                     layout: 'buyers/layouts/page' %>
+
+          <%= render partial: 'buyers/units/unit_image',
+                     collection: unit.views,
+                     layout: 'buyers/layouts/page' %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="floor-plan-controls">
+    <%= render partial: 'buyers/units/downloads',
+               locals: { unit: unit } %>
+
+    <% if unit.floor_plans.any? %>
+      <% if unit.renderings.any? %>
+        <div class="skip-to-floor-plans">
+          <%= link_to 'Floor Plans', '' %>
+        </div>
+      <% end %>
+
+      <%= render partial: 'buyers/units/comparisons',
+                 object: units_to_compare_to(units, unit) %>
+    <% end %>
+  </div>
+
+  <div class="unit-amenities">
+
+    <%= render partial: 'buyers/units/details', locals: { unit: unit } %>
+
+    <div class="features column">
+      <% unit.text_blocks.each do |text| %>
+        <div class="feature">
+          <% if text.title? %>
+            <h3><%= text.title %></h3>
+          <% end %>
+
+          <%= attribute_tag :body, text %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+</div>

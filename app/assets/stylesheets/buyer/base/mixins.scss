@@ -1,0 +1,66 @@
+//@include set_background('slideshow_block/arrow-left', 'gif', 'Wpx Hpx', '0 0');
+@mixin set_background($img, $file_type, $size, $options: 'no-repeat', $color: transparent) {
+  @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 192dpi) {
+    background: $color image-url($img + '@2x.' + $file_type) #{$options} !important;
+    background-size: #{$size} !important;
+  }
+
+  background: $color image-url($img + '.' + $file_type) #{$options};
+}
+
+// General Breakpoint mixins
+@mixin ext {
+  @media only screen and (min-width: $ext_min_width) and (max-width: $ext_max_width) { @content; }
+}
+
+@mixin desk {
+  @media only screen and (min-width: $desk_min_width) and (max-width: $desk_max_width) { @content; }
+}
+
+@mixin tab {
+  @media only screen and (min-width: $tab_min_width) and (max-width: $tab_max_width) { @content; }
+}
+
+@mixin hand {
+  @media only screen and (min-width: $hand_min_width) and (max-width: $hand_max_width) { @content; }
+}
+
+// @include transition(background-color, 150ms, ease-out);
+@mixin transition($attribute, $time, $easing) {
+  -webkit-transition: $attribute $time $easing;
+     -moz-transition: $attribute $time $easing;
+       -o-transition: $attribute $time $easing;
+          transition: $attribute $time $easing;
+}
+
+// @include @include transform(translate(-50%, -50%));
+@mixin transform($value) {
+  -webkit-transform: $value;
+     -moz-transform: $value;
+      -ms-transform: $value;
+       -o-transform: $value;
+          transform: $value;
+}
+
+@mixin margin($direction, $value: $margin) {
+  @if $direction == 'top' {
+    margin-top: $value;
+  } @else if $direction == 'right' {
+    margin-right: $value;
+  } @else if $direction == 'bottom' {
+    margin-bottom: $value;
+  } @else {
+    margin-left: $value;
+  }
+}
+
+@mixin prefix($label) {
+  &::before {
+    content: $label;
+    display: block;
+  }
+}
+
+@mixin dashed($type, $options: '', $color: transparent) {
+  @include set_background('dashborder-#{$type}', 'png', '12px 3px', 'repeat-x #{$options}', $color);
+}

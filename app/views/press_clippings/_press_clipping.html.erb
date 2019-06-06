@@ -1,0 +1,24 @@
+<%= link_to press_clipping, class: 'press-clipping' do %>
+  <div class="press-clipping-inner">
+    <% if press_clipping.logo? %>
+      <div class="press-clipping-source is-logo"
+           style="background-image: url(<%= image_path press_clipping.logo %>)">
+        <%= press_clipping.source %>
+      </div>
+    <% else %>
+      <div class="press-clipping-source">
+        <%= press_clipping.source %>
+      </div>
+    <% end %>
+
+    <div class="press-clipping-text">
+      <div class="press-clipping-title">
+        <%= press_clipping.title %>
+      </div>
+    </div>
+
+    <div class="press-clipping-date">
+      <%= press_clipping.date.strftime('%m.%d.%y') %>
+    </div>
+  </div>
+<% end %>

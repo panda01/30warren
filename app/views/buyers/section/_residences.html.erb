@@ -1,0 +1,8 @@
+<div class="units">
+  <%= render partial: 'buyers/units/unit',
+             collection: @dashboard.units,
+             spacer_template: 'hr',
+             locals: {
+               units: @dashboard.units
+             } %>
+</div>

@@ -1,0 +1,33 @@
+.misc-text {
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+  @extend %regular;
+
+  h1,
+  h2 {
+    color: $headline;
+    border-bottom: 1px solid $rule;
+    display: inline-block;
+    margin-bottom: $regular-leading * 1em;
+    @extend %headline;
+  }
+
+  ul {
+    text-align: left;
+    max-width: 400px;
+    margin: #{$regular-leading * 1em} auto;
+
+    li {
+      position: relative;
+      padding-left: 15px;
+
+      &::before {
+        content: "\2014 ";
+        position: absolute;
+        left: 0;
+      }
+    }
+  }
+}

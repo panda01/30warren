@@ -1,0 +1,62 @@
+form {
+  input[type=text] {
+    font-family: $sans;
+    width: 100%;
+    border: none;
+    background-color: $input;
+    padding: 9px 10px 7px;
+    margin: 0 0 15px;
+    transition: background-color 300ms;
+    appearance: none;
+    color: $text;
+    border: 1px solid $black;
+    @extend %regular;
+
+    .hairlines & {
+      border: 0.5px solid $black;
+    }
+
+    &:focus {
+      background-color: $white;
+    }
+  }
+
+  input[type=submit] {
+    @include button;
+    display: block;
+    text-transform: none;
+    width: 150px;
+    margin: $gutters auto;
+    color: $white;
+    cursor: pointer;
+    @extend %regular;
+  }
+
+  select {
+    font-family: $sans;
+    width: 100%;
+    background-color: $white;
+    border: none;
+    border-radius: 0;
+    padding: 9px 10px 7px;
+    margin: 0 0 15px;
+    appearance: none;
+    cursor: pointer;
+    color: $text;
+    border: 1px solid $black;
+    @extend %regular;
+
+    .hairlines & {
+      border: 0.5px solid $black;
+    }
+  }
+
+  .error {
+    margin-bottom: $gutter;
+    color: $error;
+  }
+
+  .field_with_errors input {
+    border: 1px solid $error;
+  }
+}

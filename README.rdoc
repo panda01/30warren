@@ -1,0 +1,13 @@
+== README
+
+=== Neighborhood
+
+Neighborhood
+• The remaining requested neighborhood names should be visible:
+
+West Village,
+East Village,
+Financial District (perhaps FiDi?),
+Nolita.
+
+Remove all labels beyond Manhattan and it's bridges (possible?).

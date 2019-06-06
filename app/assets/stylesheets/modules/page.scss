@@ -1,0 +1,97 @@
+.content-blocks {
+  width: 100%;
+  font-size: 0;
+  padding-bottom: 32px;
+}
+
+.content-block {
+  vertical-align: middle;
+
+  @include hand {
+    margin-bottom: $margin;
+  }
+}
+
+.content-block-chunk {
+  height: calc(100vh - 150px - 32px);
+  overflow: hidden;
+  margin-bottom: $large-margin;
+  position: relative;
+
+  @include hand {
+    height: auto;
+    margin-bottom: 0;
+    overflow: visible;
+  }
+
+  body.gallery & {
+    height: calc(100vh - 110px - 32px);
+  }
+}
+
+.next-page-link {
+  position: fixed;
+  bottom: 32px + 10px;
+  text-align: center;
+  // Add 60px to clear the width of paginators that might occur at
+  // the end of the page, if a slideshow or panorama comes last.
+  right: $gutter + 60px;
+  transform: translateY(100px);
+  background-color: $transparent-black;
+  transition: opacity 500ms ease, transform 1s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0;
+  z-index: 9999;
+  @extend %small;
+
+  a {
+    padding: 6px 10px 3px;
+    color: $white;
+    display: block;
+  }
+
+  &.is-shown {
+    transition: opacity 1s ease 200ms, transform 1s ease 200ms;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @include hand {
+    display: none;
+  }
+}
+
+.content-block-paginator {
+  position: fixed;
+  left: 40px;
+  right: 40px;
+  height: 20%;
+  cursor: crosshair;
+
+  &.is-previous {
+    top: 150px;
+    cursor: n-resize;
+    cursor: image-url('arrow-up.png') 18 11, auto;
+  }
+
+  &.is-next {
+    bottom: 30px;
+    cursor: s-resize;
+    cursor: image-url('arrow-down.png') 18 11, auto;
+  }
+
+  &.is-hidden {
+    display: none;
+  }
+
+  @include hand {
+    display: none;
+  }
+
+  .the-team & {
+    @media (min-width: 1000px) {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,379 @@
+#lightbox {
+  background-color: $background;
+
+  .comparitor {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    bottom: 20px;
+    left: 20px;
+
+    .title {
+      padding-top: 10px;
+      @extend %regular;
+
+      &::before {
+        content: "Residence: ";
+      }
+    }
+
+    .unit-floorplans {
+      background-color: $white;
+      position: absolute;
+      top: 50px;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      overflow: hidden;
+    }
+
+    .floor-plan,
+    .floor-plan .image,
+    .floor-plan .image-padding,
+    .floor-plan .image-proxy {
+      height: 100%;
+    }
+
+    .image-padding {
+      padding: $gutters;
+    }
+
+    .image-proxy {
+      background-size: contain;
+      background-position: center center;
+      background-repeat: no-repeat;
+      height: 100%;
+      width: 100%;
+    }
+
+    img {
+      display: none;
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      background-color: white;
+      border-radius: 100%;
+      line-height: 30px;
+      text-align: center;
+      height: 30px;
+      width: 30px;
+      z-index: 101;
+      transform: translate(0, -50%);
+
+      &.prev { left: $gutter; right: auto; }
+      &.next { right: $gutter; }
+      &:hover { cursor: pointer; }
+    }
+  }
+
+  .current-unit,
+  .compare-unit {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+  }
+
+  .current-unit {
+    padding-right: 10px;
+
+    .unit-floorplans {
+      right: 10px;
+    }
+  }
+
+  .compare-unit {
+    left: auto;
+    right: 0;
+    padding-left: 10px;
+
+    .unit-floorplans {
+      left: 10px;
+    }
+  }
+}
+
+.lightboxable {
+  &:hover { cursor: pointer; }
+}
+
+#lightbox {
+  position: fixed;
+  z-index: 9999999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparentize($background, 0.03);
+  color: $headline;
+  @extend %small;
+
+  .lightbox-title {
+    position: absolute;
+    bottom: $gutters;
+    left: $gutters;
+    font-family: $sans;
+    color: $headline;
+    @extend %small;
+
+    @include hand {
+      display: none;
+    }
+
+    a {
+      color: $headline;
+      border-bottom: 1px solid $black !important;
+    }
+
+    .orientation,
+    .area {
+      margin-bottom: $small-margin;
+    }
+  }
+
+  a { border: none; }
+
+  .spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @include transform(translate(-50%, -50%));
+  }
+
+  .slick-counter {
+    .availability & { display: none; }
+    position: fixed;
+    top: 28px;
+    left: 80px;
+    @include transform(translateX(-50%));
+    @extend %small;
+    z-index: 101;
+    font-family: $sans;
+    color: $gray;
+  }
+
+  .arrow {
+    position: fixed;
+    top: 20px;
+    z-index: 101;
+    &.prev { right: 60px; }
+    &.next { right: 20px; }
+    &:hover { cursor: pointer; }
+  }
+}
+
+#close-lightbox {
+  @include set-background(close-button-black, png, 20px 20px);
+  position: fixed;
+  z-index: 102;
+  top: 23px;
+  right: 20px;
+  height: 20px;
+  width: 20px;
+}
+
+#lightbox-slides {
+  width: 100%;
+  height: 100%;
+}
+
+.lightbox-slide {
+  width: 100%;
+  height: 100%;
+  padding: 65px 20px 20px 20px;
+
+  .lightbox-slide-content {
+    height: 100%;
+    position: relative;
+  }
+}
+
+#lightbox .slick-slide,
+.lightbox-slide {
+  .image {
+    padding: 0 !important;
+  }
+}
+
+#lightbox .slick-slide,
+.lightbox-slide,
+.slideshow .page {
+
+  .image {
+    height: 100%;
+    width: 100%;
+    background: transparent none no-repeat scroll center center;//top right;
+    background-size: contain;
+    position: relative;
+    overflow: hidden;
+
+    // img is only used for checking when an image is loaded
+    img {
+      display: none;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: $background;
+      background-size: 14px 10px;
+      opacity: 0;
+    }
+
+    &::after {
+      @include set_background(loading, gif, 14px 10px, repeat-x center center);
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-top: -5px;
+      margin-left: -100px;
+      width: 200px;
+      height: 10px;
+      opacity: 0;
+    }
+
+    &.loading::after,
+    &.loading::before {
+      opacity: 1;
+    }
+
+    &.zoomed {
+
+      &,
+      & .image-proxy {
+        background-image: none !important;
+      }
+
+      img {
+        cursor: move;
+        display: block !important;
+        max-width: 70%;
+        max-height: 70%;
+      }
+
+      .image-container {
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        bottom: -50%;
+        left: -50%;
+      }
+
+      &::after,
+      &::before {
+        display: none;
+      }
+    }
+  }
+
+  .caption {
+    display: none;
+  }
+
+  &.availability-slide {
+    .lightbox-slide-content {
+      margin-left: 200px;
+
+      @include hand {
+        margin-left: 0;
+      }
+    }
+  }
+
+  &.floor-plan {
+    .lightbox-slide-content {
+      padding: $gutters;
+      position: relative;
+    }
+
+    .image {
+      background-position: center center;
+      cursor: zoom-in;
+
+      &.zoomed {
+        cursor: zoom-out;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+
+.slick-track {
+  height: 100%;
+}
+
+.slick-slide {
+  display: none;
+  float: left;
+  height: 100%;
+  min-height: 100%;
+
+  img {
+    display: block;
+  }
+
+  &.slick-loading img {
+    display: none;
+  }
+
+  &.dragging img {
+    pointer-events: none;
+  }
+
+  .slick-initialized & {
+    display: block;
+  }
+
+  .slick-loading & {
+    visibility: hidden;
+  }
+}
+
+.slick-list {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+
+  &:focus {
+    outline: none;
+  }
+}
+.slick-slider {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -moz-box-sizing: border-box;
+  -webkit-touch-callout: none;
+       -ms-touch-action: none;
+           touch-action: none;
+  -webkit-user-select: none;
+   -khtml-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+
+.slick-slider .slick-list, .slick-track, .slick-slide, .slick-slide img {
+  -webkit-transform: translate3d(0, 0, 0);
+     -moz-transform: translate3d(0, 0, 0);
+      -ms-transform: translate3d(0, 0, 0);
+       -o-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}

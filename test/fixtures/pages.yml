@@ -1,0 +1,52 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  slug: residences
+  position: 1
+  editable: false
+  in_primary_nav: false
+  active: false
+
+two:
+  name: MyString
+  slug: neighborhood
+  position: 1
+  editable: false
+  in_primary_nav: false
+  active: false
+
+places:
+  name: Neighborhood
+  slug: neighborhood
+  active: true
+
+the_team:
+  name: The Team
+  slug: the-team
+  active: true
+
+availability:
+  name: Availability
+  slug: availability
+  active: true
+
+press:
+  name: Press
+  slug: press
+  active: true
+
+legal:
+  name: Legal
+  slug: legal
+  active: true
+
+colophon:
+  name: Colophon
+  slug: colophon
+  active: true
+
+gallery:
+  name: Galley
+  slug: gallery
+  active: true

@@ -1,0 +1,89 @@
+.jump-links {
+  background: $navigation;
+  border-bottom: 1px solid #3a3a38;
+  @extend %clearfix;
+
+  @include hand {
+    width: 100%;
+    padding: 0 30px;
+    z-index: 6000;
+    display: none;
+    background-color: $home-header;
+
+    .jump-links {
+      display: none !important;
+    }
+  }
+
+  a {
+    display: inline-block;
+    overflow: hidden;
+    margin: 0 16px;
+    color: $navigation-text;
+    vertical-align: top;
+    padding: 12px 0 9px;
+    position: relative;
+    font-size: 16px;
+    line-height: 1.2;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 100%;
+      max-width: 50px;
+      height: 2px;
+      background-color: transparent;
+      transform: translateX(-50%);
+      transition: background-color 300ms;
+
+      @include hand {
+        display: none;
+      }
+    }
+
+    &.is-active,
+    &:hover {
+      color: $active;
+
+      &::before {
+        background-color: $active;
+      }
+    }
+  }
+
+  ul {
+    width: 100%;
+    float: left;
+    text-align: center;
+
+    @include hand {
+      padding-bottom: 5px;
+    }
+  }
+
+  li {
+    @include dropdown('.jump-links');
+    @extend %inlineblock;
+
+    @include hand {
+      display: block;
+    }
+
+    ul {
+      // This is where Brian gets to gloat that he was totally right about
+      // the hack in content.scss that introduces a new stacking order with
+      // transform: translate having further reaching ramifications.
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  &.is-close-to-bottom .jump-links ul {
+    top: inherit;
+    bottom: -$gutter;
+    padding-top: $gutter;
+    padding-bottom: $gutter * 3.4;
+    margin-bottom: 0;
+  }
+}

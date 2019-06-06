@@ -1,0 +1,27 @@
+<div class="content-block <%= css_class(cb) %>
+            <%= 'is-full-width' if cb.full? %>"
+      id="<%= css_id(cb) %>">
+  <div class="feature-block__text">
+    <header>
+      <% if cb.title? %>
+        <h2><%= cb.title %></h2>
+      <% end %>
+    </header>
+
+    <% if cb.body? %>
+      <div class="body">
+        <%= f cb.body %>
+      </div>
+    <% end %>
+
+    <% if cb.subhead? %>
+      <div class="subhead">
+        <%= f cb.subhead %>
+      </div>
+    <% end %>
+
+    <div class="features">
+      <%= f cb.features %>
+    </div>
+  </div>
+</div>

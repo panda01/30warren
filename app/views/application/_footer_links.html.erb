@@ -1,0 +1,18 @@
+<div class="links">
+  <% unless params[:controller] == "buyers" %>
+    <div class="site-credit">
+      <%= link_to "Site Credit", colophon_url(subdomain: false) %>
+    </div>
+  <% end %>
+
+  <div class="legal">
+    <%= link_to "Legal", legal_url(subdomain: false) %>
+  </div>
+
+  <div class="fact-sheet">
+    <%= link_to "Download Factsheet",
+                "/pdfs/30w_FactSheet_160526.pdf",
+                target: "_blank",
+                class: "fact-sheet-link" %>
+  </div>
+</div>

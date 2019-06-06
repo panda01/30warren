@@ -1,0 +1,24 @@
+.placeholder {
+  background-color: $white;
+  position: relative;
+  overflow: hidden;
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.wrapper img {
+  &.loading {
+    opacity: 0;
+  }
+
+  &.loaded {
+    transition: opacity 1s;
+    opacity: 1;
+  }
+}

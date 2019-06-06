@@ -1,0 +1,164 @@
+.image-block {
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+
+  .placeholder {
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    padding-top: 0 !important;
+
+    img {
+      display: none;
+
+      @include hand {
+        display: block;
+        position: static;
+      }
+    }
+  }
+
+  &__image {
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+
+    @include hand {
+      width: auto !important;
+    };
+  }
+
+  &__details {
+    pointer-events: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 190px $gutters (62px + 20px);
+    background: linear-gradient(180deg,
+                                rgba(37, 34, 40, 0),
+                                rgba(37, 34, 40, 0.5) 65%,
+                                rgba(37, 34, 40, 0.7));
+    text-align: center;
+    text-shadow: 0 0 7px rgba(37, 34, 40, 0.4);
+  }
+
+  &__rendering {
+    position: absolute;
+    bottom: 10px;
+    right: $gutter;
+    opacity: 0.7;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: $white;
+    @extend %tiny;
+  }
+
+  &__title {
+    color: $white;
+    @extend %large;
+  }
+
+  &__caption {
+    color: $white;
+    margin: .35em auto 0;
+    max-width: 440px;
+    @extend %regular;
+  }
+
+  .read-more {
+    position: absolute;
+    bottom: 58px;
+    left: 50%;
+    color: $caption;
+    transform: translateX(-50%);
+    @extend %small;
+
+    &:hover {
+      color: $white;
+    }
+
+    @include hand {
+      display: none;
+    }
+  }
+
+  &.is-full-width {
+    .image-block__details {
+      @media only screen and (max-width: 767px) {
+        padding-bottom: 30px;
+      }
+    }
+  }
+
+  &.is-half-width {
+    width: 50%;
+    display: inline-block;
+
+    @include hand {
+      width: 100%;
+      display: block;
+    }
+
+    .caption {
+      width: 100%;
+    }
+
+    .text-block + &,
+    .feature-block + & {
+      .caption {
+        margin-left: -$gutter;
+
+        @include hand {
+          margin-left: 0;
+        }
+      }
+    }
+
+    & + .text-block,
+    & + .feature-block {
+      .caption {
+        margin-left: 0;
+      }
+    }
+
+    .image-block {
+      &__details {
+        padding-top: 60px;
+        padding-bottom: 32px;
+
+        @media only screen and (max-width: 767px) {
+          position: static;
+          padding: $gutter $gutter 0;
+          background: none;
+          text-shadow: none;
+        }
+      }
+
+      &__caption {
+        @media only screen and (max-width: 767px) {
+          color: #8a8682;
+        }
+      }
+    }
+  }
+
+  &.is-contained {
+    .placeholder {
+      background-size: contain;
+      height: 100%;
+    }
+
+    .caption {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 400px;
+      text-align: center;
+    }
+  }
+}

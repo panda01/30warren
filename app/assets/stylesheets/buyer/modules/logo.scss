@@ -1,0 +1,23 @@
+%small-logo {
+  $logo-width: 376px / 2;
+  $logo-height: 33px / 2;
+
+  @include set_background('389e89logo-short',
+                          'png',
+                          $logo-width $logo-height,
+                          'no-repeat scroll left center');
+  width: $logo-width;
+  height: $logo-height;
+  overflow: hidden;
+  text-indent: -9999px;
+  float: left;
+  border: none;
+
+  @media screen and (max-width: 820px) {
+    @include set_background('389e89logo-short',
+                            'png',
+                            #{$logo-width * 0.8} #{$logo-height * 0.8},
+                            'no-repeat scroll left center');
+    width: $logo-width * 0.8;
+  }
+}

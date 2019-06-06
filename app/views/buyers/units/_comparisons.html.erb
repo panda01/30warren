@@ -1,0 +1,19 @@
+<% if comparisons.any? %>
+  <div class="compare">
+    <a>Compare</a>
+
+    <div class="other-units">
+      <ul>
+        <% comparisons.each do |compare| %>
+          <% next unless compare.floor_plans.any? %>
+          <li>
+            <a href="#compare-<%= compare.door_number.parameterize %>"
+               data-compare-id="<%= compare.door_number.parameterize %>">
+              <%= compare.door_number %>
+            </a>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>

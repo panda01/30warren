@@ -1,0 +1,7 @@
+.team-block {
+  @extend %text-based-block;
+
+  header {
+    margin-bottom: 0;
+  }
+}

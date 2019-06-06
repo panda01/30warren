@@ -1,0 +1,21 @@
+<div class="content-block <%= css_class(cb) %>" id="<%= css_id(cb) %>">
+  <div class="slides <%= 'is-panorama' if cb.is_panorama? %>"
+      <%= 'data-is-panorama' if cb.is_panorama? %>>
+    <% cb.slides.each do |slide| %>
+      <div class="slide">
+        <div class="slide-image  <%= 'is-contained' if cb.contained? %>">
+          <%= image_tag_with_placeholder slide.image,
+                                         size: :full_screen,
+                                         background: true,
+                                         lightboxable: false %>
+        </div>
+
+        <div class="slide-image-prop">
+          <%= image_tag_with_placeholder slide.image,
+                                         size: :full_screen,
+                                         lightboxable: false %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

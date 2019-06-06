@@ -1,0 +1,7 @@
+<div class="press-decoration">
+  <% press_decoration.files.each do |filename| %>
+    <div class="press-decoration__image"
+         style="background-image: url(<%== image_path filename %>)">
+    </div>
+  <% end %>
+</div>

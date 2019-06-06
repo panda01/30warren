@@ -1,0 +1,8 @@
+<% if unit.show_floor_plan_pdf? %>
+  <div class="downloads">
+    <%= link_to 'Download',
+                unit.floor_plan_pdf.attachment_url,
+                class: 'pdf',
+                target: '_blank' %>
+  </div>
+<% end %>

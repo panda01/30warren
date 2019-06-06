@@ -1,0 +1,36 @@
+<div class="unit-details">
+  <h3>Features</h3>
+
+  <ul class="rooms">
+    <li><%= pluralize unit.number_of_bedrooms, "Bed" %></li>
+
+    <li>
+      <%= number_with_precision unit.number_of_bathrooms, strip_insignificant_zeros: true %>
+      <%= "Bath".pluralize unit.number_of_bathrooms %>
+    </li>
+
+    <% if unit.number_of_powder_rooms && unit.number_of_powder_rooms > 0 %>
+      <li><%= pluralize unit.number_of_powder_rooms, "Powder Room" %></li>
+    <% end %>
+
+    <% if unit.description? %>
+      <li><%= simple_format unit.description %></li>
+    <% end %>
+  </ul>
+
+  <div class="area">
+    <% if unit.area.exterior? %>
+      <div class="interior">
+        Interior <%= unit.area.interior %>ft&sup2; / <%= unit.area.metric.interior %>m&sup2;
+      </div>
+
+      <div class="exterior">
+        Exterior <%= unit.area.exterior %>ft&sup2; / <%= unit.area.metric.exterior %>m&sup2;
+      </div>
+    <% else %>
+      <div class="total">
+        <%= unit.area.total %>ft&sup2; / <%= unit.area.metric.total %>m&sup2;
+      </div>
+    <% end %>
+  </div>
+</div>

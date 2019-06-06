@@ -1,0 +1,23 @@
+<div class="team-member" name="<%= team_member.name.parameterize %>">
+  <div class="details">
+    <header>
+      <div class="name">
+        <%= team_member.name %>
+      </div>
+
+      <% if team_member.role? %>
+        <div class="role">
+          <%= team_member.role %>
+        </div>
+      <% end %>
+    </header>
+
+    <div class="description">
+      <%= m team_member.description %>
+    </div>
+
+    <% if team_member.url? %>
+      <%= link_to "Visit Site", team_member.url, class: "url", target: "_blank" %>
+    <% end %>
+  </div>
+</div>

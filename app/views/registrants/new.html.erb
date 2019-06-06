@@ -1,0 +1,21 @@
+<% content_for(:page_title, 'New Condo Development for Sale in Tribeca | Contact') %>
+<% content_for(:page_description, "Click here to contact us and sign up for development updates for 30 Warren's new Condo Development for Sale in Tribeca.") %>
+
+<div class="registrant-form">
+  <% if @page.text_blocks.any? %>
+    <% cb = @page.text_blocks.first %>
+    <%= render "content_blocks/#{cb.path_name}/show", cb: cb.send(cb.path_name) %>
+  <% else %>
+    <%= render "contact_details" %>
+  <% end %>
+
+  <%= render 'registrants/form' %>
+</div>
+
+<div class="disclaimer">
+  <p>
+    This is not an offering. All depictions of personal property or condominium property, including without limitation any interior furniture, equipment, decorations, finishes, fixtures, appliances, furnishings, and landscaping, are for illustrative purposes only.   All dimensions and square footages are approximate and subject to normal construction variances and tolerances.  Square footages exceed the usable floor area.  Sponsor reserves the right to make changes in accordance with the terms of the Offering Plan.  All images are renderings. The complete offering terms are in an offering plan available from the Sponsor.  File # CD15-0080.  Sponsor Name:  Cape Church Associates, LLC, c/o Cape Advisors, Inc. 483 Broadway, 5th Floor, New York, NY  10013. Equal Housing Opportunity.
+  </p>
+</div>
+
+<%= render "colophon" %>
