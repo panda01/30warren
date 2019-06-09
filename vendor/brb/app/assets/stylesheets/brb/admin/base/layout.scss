@@ -1,0 +1,31 @@
+// Widths for individual elements
+%c1 { width: $unit_width * 1; padding-left: $gutter; padding-right: $gutter; }
+%c2 { width: $unit_width * 2; padding-left: $gutter; padding-right: $gutter; }
+%c3 { width: $unit_width * 3; padding-left: $gutter; padding-right: $gutter; }
+%c4 { width: $unit_width * 4; padding-left: $gutter; padding-right: $gutter; }
+%c5 { width: $unit_width * 5; padding-left: $gutter; padding-right: $gutter; }
+%c6 { width: $unit_width * 6; padding-left: $gutter; padding-right: $gutter; margin-left: auto; margin-right: auto; }
+
+%withgutters { padding-left: $gutter; padding-right: $gutter; }
+.withgutters { padding-left: $gutter; padding-right: $gutter; }
+
+.one-tenth-space-after  { margin-bottom: 10px; }
+.one-half-space-after   { margin-bottom: 30px; }
+.full-space-after       { margin-bottom: 60px; }
+
+%one-tenth-space-after  { margin-bottom: 10px; }
+%one-half-space-after   { margin-bottom: 30px; }
+%full-space-after       { margin-bottom: 60px; }
+
+.one-tenth-space-before { margin-top: 10px; }
+.one-half-space-before  { margin-top: 30px; }
+.full-space-before      { margin-top: 60px; }
+
+%one-tenth-space-before { margin-top: 10px; }
+%one-half-space-before  { margin-top: 30px; }
+%full-space-before      { margin-top: 60px; }
+
+
+
+
+%nogutters { padding-left: 0; padding-right: 0; }

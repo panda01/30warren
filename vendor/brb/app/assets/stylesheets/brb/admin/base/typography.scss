@@ -1,0 +1,37 @@
+@mixin typeface($name) {
+  font-family: $name;
+}
+
+
+%regular { font-size: $regular_size; line-height: $regular_leading; letter-spacing: 0; }
+%large   { font-size: $large_size;   line-height: $large_leading; letter-spacing: 0; }
+%small   { font-size: $small_size;   line-height: $small_leading; letter-spacing: 0; }
+
+
+//Bold/italic resets
+strong, b { font-weight: bold; }
+em, i { font-style: italic; }
+
+sup {
+  vertical-align: super;
+  font-size: smaller;
+  line-height: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @extend %large;
+  font-weight: normal;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: $black;
+  text-decoration: none;
+}
+
+p { margin: 0 0 $regular_leading 0; }

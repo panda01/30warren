@@ -1,0 +1,24 @@
+<div class="content-block-wrapper" id="content-block-<%= content_block_id %>-wrapper">
+  <div id="placeholder-options"></div>
+
+  <div id="content-block-<%= content_block_id %>" class="content-block <%= block_type.underscore.dasherize %>" style="display: none;">
+
+    <%= render('admin/content_blocks/actions', content_block_id: content_block_id, content_block_field: content_block_field, existing: false, kind: block_type) %>
+
+    <div class="content">
+      <%= f.fields_for :content_blocks, content_block, child_index: id do |cb_field| %>
+
+        <%= cb_field.hidden_field :parent_type %>
+        <%= cb_field.hidden_field :parent_id %>
+        <%= cb_field.hidden_field :block_type, value: block_type %>
+        <%= cb_field.hidden_field :position, class: 'position' %>
+
+        <%= cb_field.fields_for block_type.underscore.to_sym, content_block.send("build_#{block_type.underscore}") do |field| %>
+          <%= render "admin/content_blocks/#{block_type.underscore}/form", field: field %>
+        <% end %>
+
+      <% end %>
+    </div>
+
+  </div>
+</div>

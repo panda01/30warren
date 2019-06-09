@@ -1,0 +1,91 @@
+// Color
+$black:        #000;
+$white:        #fff;
+$background:   #f1f1f1;
+$dark_gray:    #c6c6c6;
+$gray:         #dbdbdb;
+$light_gray:   #f4f4f4;
+$blue:         #2eb0ea;
+$light_blue:   #e8f9ff;
+$lighter_blue: #f1fbff;
+$red:          #e9122d;
+$dark_red:     #B90C21;
+$green:        #2fcb6d;
+$dark_green:   #2aa95c;
+$yellow:       #ffed2f;
+
+// Unit Width
+$unit_width: 155px;
+
+
+// Spacing
+$gutter:       15px;
+$gutters:      $gutter * 2;
+$hand_gutter:  10px;
+$hand_gutters: $hand_gutter * 2;
+
+// Type sizes
+$large_size:      30px;
+$large_leading:   33px;
+$regular_size:    13px;
+$regular_leading: 16px;
+$small_size:      10px;
+$small_leading:   12px;
+
+// Fonts
+$sans: Helvetica, Arial, sans-serif;
+$serif: Times, Times New Roman, serif;
+
+
+
+%whitespacefix {
+  font-size: 0;
+  line-height: 0;
+  letter-spacing: -4px;
+}
+
+%inlineblock {
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+  letter-spacing: 0;
+}
+
+// Links
+@mixin underline { border-bottom: 1px solid $black; }
+
+//@include set_background('small-pager-arrow-next.gif', '10px 30px', '0 0');
+@mixin set_background($img, $size, $position) {
+  @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 192dpi) {
+    background: url('/ui/retina/' + $img) no-repeat #{$position} !important;
+    -moz-background-size: #{$size};
+    background-size: #{$size} !important;
+  }
+  background: url('/ui/' + $img) no-repeat #{$position};
+}
+
+// TODO: replace mixin with transform
+@mixin verticalalign {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+// TODO: replace mixin with transform
+@mixin horizontalalign {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+@mixin transform($value) {
+  -webkit-transform: $value;
+     -moz-transform: $value;
+      -ms-transform: $value;
+       -o-transform: $value;
+          transform: $value;
+}

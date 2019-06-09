@@ -9,6 +9,8 @@ capybara-*.html
 /coverage/
 /spec/tmp
 **.orig
+**.swp
+**.swo
 rerun.txt
 pickle-email-*.html
 .ruby-env
@@ -19,7 +21,6 @@ config/initializers/secret_token.rb
 
 ## Environment normalisation:
 /.bundle
-/vendor
 
 # these should all be checked in to normalise the environment:
 # Gemfile.lock, .ruby-version, .ruby-gemset

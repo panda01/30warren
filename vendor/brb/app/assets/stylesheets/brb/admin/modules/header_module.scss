@@ -1,0 +1,77 @@
+.header-module {
+  &.logging-in { border-top: 12px solid $dark_gray; }
+  @extend %c6;
+  @extend %nogutters;
+
+  .toolbar {
+    @extend %whitespacefix;
+    @extend %c6;
+    background: $light_gray;
+    border-bottom: 10px solid $dark_gray;
+    padding: 10px 0;
+
+    .navigation {
+      vertical-align: middle;
+      @extend %c3;
+      @extend %inlineblock;
+      @extend %regular;
+      @extend %nogutters;
+      li {
+        @extend %inlineblock;
+        position: relative;
+        @extend %withgutters;
+
+      }
+    }
+
+    .project-links {
+      li { padding: 0 0 0 $gutter; }
+      .home {
+        display: block;
+        width: 40px;
+        height: 40px;
+        background: $black;
+        border-radius: 20px;
+        color: transparent;
+        margin: 0;
+        padding: 0;
+      }
+
+      .title {
+        @extend %large;
+        line-height: 0;
+        position: relative;
+        top: 18px;
+      }
+    }
+
+    .user-links {
+      text-align: right;
+    }
+
+  }
+}
+
+.page-header {
+  @extend %c6;
+  @extend %withgutters;
+  @extend %one-half-space-before;
+  @extend %one-half-space-after;
+  position: relative;
+
+  h1 { @extend %inlineblock; margin-right: $gutter; }
+
+  #search-form {
+    position: absolute;
+    top: -18px;
+    right: 15px;
+  }
+
+  .alternate-formats {
+    float: right;
+
+    a {
+      @extend %inlineblock;
+    }
+  }
+}

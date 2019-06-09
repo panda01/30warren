@@ -1,0 +1,121 @@
+.record-form {
+  @extend %c6;
+  @extend %nogutters;
+
+  .fields {
+    @extend %withgutters;
+    @extend %one-half-space-after;
+
+    .field {
+      @extend %one-half-space-after;
+    }
+    label {
+      @extend %inlineblock;
+      @extend %c1;
+      @extend %regular;
+      vertical-align: top;
+      @extend %nogutters;
+    }
+
+    .field_with_errors {
+      @extend %inlineblock;
+    }
+  }
+
+  hr { margin: 50px 0; border: none; height: 1px; background: $gray; }
+
+  .actions {
+    @extend %withgutters;
+  }
+
+  input[type="text"], input[type="password"] {
+    width: 400px;
+  }
+
+  textarea {
+    max-width: 400px;
+    min-width: 400px;
+    width: 400px;
+    &.markdownable {
+      width: 100%;
+      max-width: 100%;
+      min-width: 100%;
+      font-family: monospace;
+    }
+  }
+  
+  .multi-select-input,
+  .image-field,
+  .images-field,
+  .rich-text-area {
+    width: 400px;
+    display: inline-block;
+  }
+
+  .image-field img {
+    vertical-align: middle;
+  }
+
+  .images-field .images .image:hover {
+    cursor: move;
+  }
+
+  .images-field,
+  .image-field {
+    .image {
+      background: $light_blue;
+      position: relative;
+      margin-bottom: 10px;
+      
+      .delete {
+        position: absolute;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+           -moz-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+             -o-transform: translateY(-50%);
+                transform: translateY(-50%);
+        right: 10px;
+        color: $red;
+      }
+      
+      &.will-destroy {
+        color: red;
+        
+        &::after {
+          content: " will be deleted";
+        }
+        
+        .delete::before {
+          content: "undo "
+        }
+        
+        .delete {
+          color: red;
+        }
+        
+        img {
+          height: 30px;
+          vertical-align: middle;
+        }
+        
+        input {
+          display: none;
+        }
+        
+        background-color: pink;
+        border: 1px solid red;
+        border-radius: 3px;
+      }
+    }
+  }
+  
+  .progress {
+    .bar {
+      height: 5px;
+      background-color: $green;
+      border-radius: 3px;
+    }
+  }
+
+}

@@ -1,0 +1,16 @@
+<div class="page-header">
+    <h1><%= resource_class.to_title.pluralize %></h1>
+    <%= link_to_new %>
+
+    <div class="alternate-formats">
+      <% if current_action_also_available_as? :csv %>
+        <%= link_to_alternate_format :csv, "Download CSV", class: 'large-button action' %>
+      <% end %>
+    </div>
+
+    <%= collection_search_form %>
+</div>
+
+<div id="<%= resource_collection_name %>-crud-table" class="crud-table">
+    <%= render partial: 'admin/shared/crud_table' %>
+</div>

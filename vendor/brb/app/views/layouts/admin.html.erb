@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Admin</title>
+    <%= stylesheet_link_tag 'brb/application', media: 'all' %>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <%= csrf_meta_tags %>
+  </head>
+  <body class="<%= controller.controller_name %>">
+    <div id="void" class="hide"></div>
+
+    <div id="page">
+      <%= render 'admin/shared/navigation' %>
+      <%= display_notice(notice) %>
+      <%= display_alert(alert) %>
+      <%= yield %>
+    </div>
+    <%= javascript_include_tag 'brb/application' %>
+  </body>
+</html>
