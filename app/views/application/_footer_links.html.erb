@@ -1,12 +1,12 @@
 <div class="links">
   <% unless params[:controller] == "buyers" %>
     <div class="site-credit">
-      <%= link_to "Site Credit", colophon_url(subdomain: false) %>
+      <%= link_to "Site Credit", colophon_url %>
     </div>
   <% end %>
 
   <div class="legal">
-    <%= link_to "Legal", legal_url(subdomain: false) %>
+    <%= link_to "Legal", legal_url %>
   </div>
 
   <div class="fact-sheet">

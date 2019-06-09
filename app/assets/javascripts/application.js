@@ -110,6 +110,7 @@ $(document).on("ready page:load", function() {
     .append('<div class="content-block-paginator is-previous">')
     .append('<div class="content-block-paginator is-next">');
 
+  // TODO: These ga events may be obsolete now that 30 Warren is using Google Tag Manager
   $(".fact-sheet-link").on("click", function() {
     ga("send", "event", "Factsheet", "Download");
   });
