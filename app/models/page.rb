@@ -24,6 +24,7 @@ class Page < ActiveRecord::Base
   has_content_block :slideshow_block
   has_content_block :team_block
   has_content_block :text_block
+  has_content_block :text_block_with_logo
 
   sluggable :name
 

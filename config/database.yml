@@ -18,7 +18,7 @@ staging:
   <<: *default
   database: p30warren_full_staging
   username: root
-  password: <%= ENV['DATABASE_PASSWORD'] %>
+  password: "yeti7!sender"
 
 production:
   <<: *default

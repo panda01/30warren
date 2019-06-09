@@ -42,6 +42,7 @@ module Admin::Concerns::PermitParams
         :block_type,
         anchor_block_params,
         text_block_params,
+        text_block_with_logo_params,
         file_block_params,
         feature_block_params,
         team_block_params,
@@ -71,6 +72,19 @@ module Admin::Concerns::PermitParams
         :id,
         :title,
         :body
+      ]
+    }
+  end
+
+  def text_block_with_logo_params
+    {
+      text_block_with_logo_attributes: [
+        :id,
+        :title,
+        :body,
+        logo_attributes: [
+          logo_params
+        ]
       ]
     }
   end
