@@ -2,7 +2,7 @@
 lock '3.4.0'
 
 set :application, 'p30warren'
-set :repo_url, 'git@github.com:noeassociates/p30warren.git'
+set :repo_url, 'git@github.com:panda01/30warren.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp

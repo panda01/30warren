@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<panorama id="">
+  <view fovmode="0" pannorth="0">
+    <start pan="-78" fov="70" tilt="0"/>
+    <min pan="-180" fov="5" tilt="-17.95188860349243"/>
+    <max pan="180" fov="120" tilt="17.95188860349243"/>
+  </view>
+  <userdata title="" datetime="2014:06:04 03:45:41" description="" copyright="" tags="" author="" source="" comment="" info="" longitude="" latitude=""/>
+  <hotspots width="180" height="20" wordwrap="1">
+    <label width="180" backgroundalpha="1" enabled="1" height="20" backgroundcolor="0xffffff" bordercolor="0x000000" border="1" textcolor="0x000000" background="1" borderalpha="1" borderradius="1" wordwrap="1" textalpha="1"/>
+    <polystyle mode="0" backgroundalpha="0.2509803921568627" backgroundcolor="0x0000ff" bordercolor="0x0000ff" borderalpha="1"/>
+  </hotspots>
+  <media/>
+  <input tile0url="/assets/pano/roof_s_o_0-e540816063625ef50043589d737f26342a0790f50f0a805f09f9665b1c7312ba.jpg" prev5url="/assets/pano/roof_s_o_preview_5-48a65f140bffa4806280219541565d9b14a7d71506f8d70cb827c12fda0ae444.jpg" prev4url="/assets/pano/roof_s_o_preview_4-48a65f140bffa4806280219541565d9b14a7d71506f8d70cb827c12fda0ae444.jpg" prev3url="/assets/pano/roof_s_o_preview_3-d42e0f6901da3dbaa860e0cd59023c515da5d212798085c6d6b5554316a9ff73.jpg" prev2url="/assets/pano/roof_s_o_preview_2-6aad5943bc3c87cf43cdb8c7da76cd28f05453e466199fe233c6f9457d72e82a.jpg" prev1url="/assets/pano/roof_s_o_preview_1-e2893c93af1299906546b6a11ff8a28b6df71722d08d78eae0c5b97ad586d16a.jpg" prev0url="/assets/pano/roof_s_o_preview_0-14a9075aa5e21509deee94a075fe3f69bd7c69caef9d97f6e012778740b8a20e.jpg" tile5url="/assets/pano/roof_s_o_5-6dc02633d1de11e643570a791ac2fc6ddfa6327a8ff18ea839716e800fcd99ba.jpg" tilesize="2590" tile4url="/assets/pano/roof_s_o_4-6dc02633d1de11e643570a791ac2fc6ddfa6327a8ff18ea839716e800fcd99ba.jpg" tile3url="/assets/pano/roof_s_o_3-a7ecf0d49b5440953c400b8e2249c24ff569b3b00957485dc6c0969833db6831.jpg" tilescale="1.003861003861004" tile2url="/assets/pano/roof_s_o_2-b6177cfbb2715fc483d4ee7cb4510d108daee96b0f0376d1eda5916f3484e1ab.jpg" tile1url="/assets/pano/roof_s_o_1-6a90ad7b8aa22ba8759828009f9593de2f2a23990c36aa39754a8de1f583a653.jpg">
+    <preview color="0x808080"/>
+  </input>
+  <control simulatemass="1" lockedmouse="0" lockedkeyboard="1" dblclickfullscreen="0" invertwheel="0" lockedwheel="1" invertcontrol="1" speedwheel="1" sensitivity="8"/>
+</panorama>
