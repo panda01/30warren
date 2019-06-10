@@ -60,7 +60,7 @@ gem 'aasm'
 
 gem 'peephole',       github: 'jackjennings/peephole'
 gem 'foundation-api', git: 'git@github.com:noeassociates/foundation-api.git'
-gem 'brb-foundation', git: 'git@github.com:noeassociates/brb-foundation.git'
+gem 'brb-foundation', git: 'git@github.com:panda01/30warren-brb-foundation.git'
 gem 'acts-as-taggable-on'
 
 gem 'autoprefixer-rails'
