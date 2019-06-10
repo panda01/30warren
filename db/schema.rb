@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180209214516) do
+ActiveRecord::Schema.define(version: 20190610182404) do
 
   create_table "amenities", force: :cascade do |t|
     t.text     "caption",    limit: 65535
@@ -256,6 +256,14 @@ ActiveRecord::Schema.define(version: 20180209214516) do
     t.string   "url",         limit: 255
   end
 
+  create_table "text_block_with_logos", force: :cascade do |t|
+    t.string   "title",            limit: 255
+    t.text     "body",             limit: 65535
+    t.integer  "content_block_id", limit: 4
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
   create_table "text_blocks", force: :cascade do |t|
     t.string   "title",            limit: 255
     t.integer  "content_block_id", limit: 4
@@ -265,6 +273,14 @@ ActiveRecord::Schema.define(version: 20180209214516) do
   end
 
   add_index "text_blocks", ["content_block_id"], name: "index_text_blocks_on_content_block_id", using: :btree
+
+  create_table "text_with_logo_blocks", force: :cascade do |t|
+    t.string   "title",            limit: 255
+    t.text     "body",             limit: 65535
+    t.integer  "content_block_id", limit: 4
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
 
   create_table "unit_types", force: :cascade do |t|
     t.string   "name",                   limit: 255
