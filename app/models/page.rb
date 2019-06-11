@@ -8,7 +8,8 @@ class Page < ActiveRecord::Base
     "gallery"          => :gallery_path,
     "contact"          => :contact_path,
     "availability"     => :units_path,
-    "press"            => :press_clippings_path
+    "press"            => :press_clippings_path,
+    "partners"         => :partner_path
   }
 
   has_heading 'Name', link: 'name'
