@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     get :legal, to: 'legal#show'
     get :neighborhood, to: 'places#index'
     get :residences, to: 'residences#show'
+    get :partners, to: 'partners#show'
     get :team, to: 'team_members#index'
     get :gallery, to: 'gallery#show'
 
