@@ -9,10 +9,12 @@
     <%= f cb.body %>
   </div>
 
+  <% if cb.logo %>
   <div class="logo">
       <%= image_tag_with_placeholder cb.logo,
                                      size: :c8,
                                      lightboxable: false,
                                      background: false %>
   </div>
+  <% end %>
 </div>
