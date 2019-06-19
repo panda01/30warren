@@ -12,6 +12,9 @@
 		  padding-top: 0 !important;
 		  > img {
 			  position: static;
+			  width: auto;
+			  height: auto;
+			  max-width: 100%;
 		  }
 	  }
   }
