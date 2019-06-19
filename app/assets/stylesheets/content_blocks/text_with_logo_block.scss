@@ -2,6 +2,7 @@
   @extend %text-based-block;
   display: inline-flex;
   flex-direction: column;
+  justify-content: center;
   .logo {
 	  max-width: 440px;
 	  width: 100%;
@@ -18,4 +19,23 @@
 		  }
 	  }
   }
+}
+@media only screen and (max-width: $hand_max_width) {
+	body.partners.partners-show {
+		.content-blocks {
+			> .content-block-chunk {
+				display: flex;
+				flex-direction: column;
+				.content-block {
+					&.image-block {
+						order: 1;
+						flex-basis: 50%;
+					}
+					&.text-with-logo-block {
+						order: 2;
+					}
+				}
+			}
+		}
+	}
 }
