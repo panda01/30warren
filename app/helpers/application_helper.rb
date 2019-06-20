@@ -99,6 +99,26 @@ module ApplicationHelper
     end
   end
 
+  def logo_image_tag_with_placeholder(image, options = {})
+    size = options.delete(:size) || :full_width
+    placeholder_options = {
+      background: options.delete(:background)
+    }
+
+    unless options.delete(:lightboxable) == false
+      placeholder_options.merge!({
+        class: 'lightboxable',
+        data: {
+          hires: image.attachment_url(:full_screen)
+        }
+      })
+    end
+
+    placeholder image.attachment_url, image.width, image.height, placeholder_options do
+      image_tag image.attachment_url, options
+    end
+  end
+
   def placeholder(src, width, height, options = {}, &block)
     padding = (height.to_f / width.to_f * 100).to_i
     style = "padding-top: #{padding}%;"
