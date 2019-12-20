@@ -227,7 +227,7 @@ GEM
     pkg-config (1.1.7)
     pundit (0.2.3)
       activesupport (>= 3.0.0)
-    rack (1.6.4)
+    rack (1.6.12)
     rack-accept (0.4.5)
       rack (>= 0.4)
     rack-cors (1.0.3)
