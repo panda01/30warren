@@ -1,6 +1,6 @@
 GIT
-  remote: git://github.com/jackjennings/peephole.git
-  revision: 63d2881b6a4416f161ed56979b97c597dbd838e1
+  remote: https://github.com/jackjennings/peephole.git
+  revision: f42c23196b202cf1922167b7a0f8fd4407b8d299
   specs:
     peephole (0.0.1)
       rails (~> 4.2.1)
@@ -163,7 +163,8 @@ GEM
     hashie (3.6.0)
     hashie-forbidden_attributes (0.1.1)
       hashie (>= 3.0)
-    i18n (0.7.0)
+    i18n (0.9.5)
+      concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
     inherited_resources (1.7.2)
       actionpack (>= 3.2, < 5.2.x)
